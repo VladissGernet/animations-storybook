@@ -1,0 +1,141 @@
+.button-1 {
+  font-family: "Montserrat", "Arial", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  position: relative;
+  z-index: 1;
+
+  margin: 20px;
+  padding: 10px;
+  width: 200px;
+  min-height: 38px;
+
+  background-color: #111111;
+  border: none;
+  box-shadow: 0 0 0 1px #006c84;
+  cursor: pointer;
+}
+
+.button-1::before,
+.button-1::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+
+  background-color: #006c84;
+}
+
+/* Первая кнопка */
+
+.button--1::before {
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.3s ease;
+}
+
+.button--1:hover::before,
+.button--1:focus::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Вторая кнопка */
+
+.button--2::before {
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  clip-path: inset(50% 0 50% 0);
+  transition: clip-path 0.3s ease;
+}
+
+.button--2:hover::before,
+.button--2:focus::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Третья кнопка */
+
+.button--3::before,
+.button--3::after {
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transition: clip-path 0.3s ease;
+}
+
+.button--3::before {
+  clip-path: inset(0 100% 0 0);
+}
+
+.button--3::after {
+  clip-path: inset(0 0 0 100%);
+}
+
+.button--3:hover::before {
+  clip-path: inset(0 50% 0 0);
+}
+
+.button--3:hover::after {
+  clip-path: inset(0 0 0 50%);
+}
+
+/* Четвертая кнопка */
+
+.button--4 {
+  box-shadow: none;
+}
+
+.button--4::before,
+.button--4::after {
+  position: absolute;
+  content: "";
+  z-index: -1;
+  box-sizing: border-box;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.button--4::before {
+  background-color: #111111;
+  border-left: 1px solid #006c84;
+  border-right: 1px solid #006c84;
+  clip-path: inset(100% 0 0 0);
+
+  transition: clip-path 0.3s ease 0.3s;
+}
+
+.button--4:hover::before {
+  clip-path: inset(0 0 0 0);
+
+  transition: clip-path 0.3s ease;
+}
+
+.button--4::after {
+  background-color: #006c84;
+  clip-path: inset(0 0 100% 0);
+
+  transition: clip-path 0.3s ease;
+}
+
+.button--4:hover::after {
+  clip-path: inset(0 0 0 0);
+
+  transition: clip-path 0.3s ease 0.3s;
+}
