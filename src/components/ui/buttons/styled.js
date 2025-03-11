@@ -10,4 +10,9 @@ ${'' /* Костыль с margin, чтобы убрать белый фон*/}
   min-height: 80vh;
 `;
 
-export { StyledButtons };
+const StyledLine = styled.hr`
+  border-color: #ffffff;
+  border-style: solid;
+`;
+
+export { StyledButtons, StyledLine };

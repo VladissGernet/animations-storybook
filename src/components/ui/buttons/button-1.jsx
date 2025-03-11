@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { StyledLine } from './styled';
+
 import './button-1.css';
 
 const Button = () => {
@@ -17,7 +19,7 @@ const Button = () => {
     <button className="button-1 button--4">
       Clip-path 4
     </button>
-    <hr className="line" />
+    <StyledLine />
     <button className="button-1 button--5">
       Transform 1
     </button>
@@ -30,7 +32,7 @@ const Button = () => {
     <button className="button-1 button--8">
       Transform 4
     </button>
-    <hr className="line" />
+    <StyledLine />
     <p style={{color: '#ffffff'}}>
       При обманчивой на первый взгляд схожести анимаций между ними есть одно существенное отличие:
       <br />
