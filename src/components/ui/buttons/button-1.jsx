@@ -4,7 +4,7 @@ import { StyledLine } from './styled';
 
 import './button-1.css';
 
-const Button = () => {
+const Button1 = () => {
   return (
     <>
     <button className="button-1 button--1">
@@ -44,4 +44,4 @@ const Button = () => {
   );
 };
 
-export { Button };
+export { Button1 };

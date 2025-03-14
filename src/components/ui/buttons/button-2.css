@@ -1,0 +1,168 @@
+.button-2 {
+  position: relative;
+  z-index: 1;
+
+  width: 200px;
+  min-height: 38px;
+  padding: 10px;
+  margin: 20px;
+  overflow: hidden;
+
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button-2::before,
+.button-2::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+
+/* Первая кнопка */
+
+.button-2--1 {
+  color: #8c8686;
+
+  transition: color 0.3s ease;
+}
+
+.button-2--1::before {
+  top: 0;
+  left: 0;
+
+  width: 250%;
+  height: 100%;
+
+  background: linear-gradient(-45deg, #9534f5 50%,  #f2c94c 50%);
+  transform: translateX(-30%);
+  transition: transform 0.6s ease;
+}
+
+.button-2--1:hover,
+.button-2--1:focus {
+  color: #ffffff;
+}
+
+.button-2--1:hover::before,
+.button-2--1:focus::before {
+  transform: translateX(-55%);
+}
+
+/* Вторая кнопка */
+
+.button-2--2 {
+  background-color: #18a1cc;
+}
+
+.button-2--2::before {
+  top: 0;
+  left: 0;
+
+  width: 200%;
+  height: 100%;
+
+  background: linear-gradient(44deg, #18a1cc, #92d1ff, #18a1cc);
+  transition: transform 0.3s ease;
+}
+
+.button-2--2:hover::before,
+.button-2--2:focus::before {
+  transform: translateX(-50%);
+}
+
+/* Третья кнопка */
+
+.button-2--3 {
+  padding: 0;
+  position: relative;
+}
+
+.button-2--3 .button-2__reaction,
+.button-2--3 .button-2__content {
+  width: 100%;
+  min-height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.3s ease;
+}
+
+.button-2--3 .button-2__reaction {
+  color: #006c84;
+  background-color: #ffccbb;
+
+  transform: translateY(-100%);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button-2--3 .button-2__content {
+  color: #ffccbb;
+
+  background-color: #006c84;
+}
+
+.button-2--3:hover .button-2__reaction  {
+  transform: translateY(0);
+}
+
+.button-2--3:hover .button-2__content {
+  transform: translateY(100%);
+}
+
+/* Четвертая кнопка */
+
+.button-2--4 {
+  padding: 0;
+  position: relative;
+}
+
+.button-2--4 .button-2__reaction,
+.button-2--4 .button-2__content {
+  width: 100%;
+  min-height: 38px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.3s ease;
+}
+
+.button-2--4 .button-2__reaction {
+  width: 56px;
+  color: #006c84;
+  background-color: #ffccbb;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.button-2--4 .button-2__content {
+  color: #ffccbb;
+
+  background-color: #006c84;
+}
+
+.button-2--4:hover .button-2__reaction  {
+  transform: translateX(0);
+}
+
+.button-2--4:hover .button-2__content  {
+  transform: translateX(28px);
+}
+

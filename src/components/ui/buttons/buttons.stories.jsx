@@ -4,12 +4,21 @@ import { Container } from '/src/components/layout/container/container';
 
 import { StyledButtons } from './styled';
 
-import { Button } from './button-1';
+import { Button1 } from './button-1';
+import { Button2 } from './button-2';
 
-export const Buttons = () => (
+export const Buttons1 = () => (
   <StyledButtons>
     <Container>
-      <Button />
+      <Button1 />
+    </Container>
+  </StyledButtons>
+)
+
+export const Buttons2 = () => (
+  <StyledButtons>
+    <Container>
+      <Button2 />
     </Container>
   </StyledButtons>
 )
