@@ -1,0 +1,48 @@
+.button-3 {
+  position: relative;
+  padding: 10px;
+
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 100%;
+  color: #ffffff;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button-3::before,
+.button-3::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background-color: #ffffff;
+  transform: scaleX(0);
+
+  transition: transform 0.4s ease;
+}
+
+.button-3.button-3--1::before {
+  transform-origin: right;
+}
+
+.button-3.button-3--2::before {
+  transform-origin: center;
+}
+
+.button-3.button-3--1:hover::before,
+.button-3.button-3--1:focus::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.button-3.button-3--2:hover::before,
+.button-3.button-3--2:focus::before {
+  transform: scaleX(1);
+}

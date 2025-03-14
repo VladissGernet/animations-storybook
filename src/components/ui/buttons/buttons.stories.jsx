@@ -6,6 +6,7 @@ import { StyledButtons } from './styled';
 
 import { Button1 } from './button-1';
 import { Button2 } from './button-2';
+import { Button3 } from './button-3';
 
 export const Buttons1 = () => (
   <StyledButtons>
@@ -19,6 +20,14 @@ export const Buttons2 = () => (
   <StyledButtons>
     <Container>
       <Button2 />
+    </Container>
+  </StyledButtons>
+)
+
+export const Buttons3 = () => (
+  <StyledButtons>
+    <Container>
+      <Button3 />
     </Container>
   </StyledButtons>
 )
