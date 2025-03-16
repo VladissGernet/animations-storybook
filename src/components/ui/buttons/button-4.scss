@@ -126,6 +126,51 @@
 
     &--4 {
       color: #435a6b;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45px;
+        height: 2px;
+        background-color: #435a6b;
+        opacity: 0.2;
+
+        transition-property: transform, opacity, left, right, top, bottom;
+        transition-duration: 0.3s;
+        transition-timing-function: ease;
+
+        transform: rotate(90deg);
+      }
+
+      &::before {
+        left: -20px;
+      }
+
+      &::after {
+        right: -20px;
+      }
+
+      &:hover,
+      &:focus {
+        &::before,
+        &::after {
+          opacity: 1;
+        }
+
+        &::before {
+          left: 50%;
+          top: 0;
+          transform: rotate(0) translateX(-50%);
+        }
+
+        &::after {
+          top: 100%;
+          transform: rotate(0) translateX(50%);
+          right: 50%;
+        }
+      }
     }
 
     &--5 {
