@@ -5,16 +5,18 @@
     color: white;
     text-transform: uppercase;
 
-    min-width: 200px;
+    min-width: 130px;
     min-height: 40px;
     margin-bottom: 20px;
 
     display: inline-block;
     border: none;
-    padding: 10px 40px;
+    padding: 0 20px;
     background-color: transparent;
 
     position: relative;
+    cursor: pointer;
+    user-select: none;
 
     &:not(:last-child) {
       margin-right: 30px;
@@ -23,13 +25,42 @@
     &--1 {
       color: #435a6b;
 
-      background-color: lightblue;
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        opacity: 0;
+
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
 
       &::before {
         content: "[";
-        position: absolute;
-        top: 0;
-        left: 0;
+        left: 14px;
+        transform: translateX(0);
+      }
+
+      &::after {
+        content: "]";
+        right: 14px;
+        transform: translateX(0);
+      }
+
+      &:hover,
+      &:focus {
+        &::before,
+        &::after {
+          opacity: 1;
+        }
+
+        &::before {
+          transform: translateX(-14px);
+        }
+
+        &::after {
+          transform: translateX(14px);
+        }
       }
     }
 
