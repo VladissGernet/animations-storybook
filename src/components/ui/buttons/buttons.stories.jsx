@@ -7,6 +7,7 @@ import { StyledButtons } from './styled';
 import { Button1 } from './button-1';
 import { Button2 } from './button-2';
 import { Button3 } from './button-3';
+import { Button4 } from './button-4';
 
 export const Buttons1 = () => (
   <StyledButtons>
@@ -28,6 +29,14 @@ export const Buttons3 = () => (
   <StyledButtons>
     <Container>
       <Button3 />
+    </Container>
+  </StyledButtons>
+)
+
+export const Buttons4 = () => (
+  <StyledButtons $backgroundColor="#ffffff">
+    <Container>
+      <Button4 />
     </Container>
   </StyledButtons>
 )
