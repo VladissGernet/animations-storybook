@@ -66,6 +66,30 @@
 
     &--2 {
       color: #f19f0f;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+
+        width: calc(100% - 40px);
+        height: 4px;
+
+        background-color: #f19f0f;
+
+        transform: translateY(10px);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      &:hover,
+      &:focus {
+        &::before {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
     }
 
     &--3 {
