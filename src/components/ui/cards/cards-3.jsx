@@ -2,7 +2,7 @@ import React from 'react';
 
 import image from '/src/assets/shoes-card-1.png';
 
-import './cards-3.css';
+import './cards-3.scss';
 
 const CardsList3 = () => (
   <ul className='cards-3'>

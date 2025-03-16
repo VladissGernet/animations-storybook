@@ -1,0 +1,122 @@
+.cards-3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  .card {
+    width: 300px;
+    height: 400px;
+
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    user-select: none;
+    background-color: #242524;
+
+    list-style-type: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      clip-path: circle(25% at 50% 40%);
+
+      transition: clip-path 0.6s ease;
+    }
+
+    &::after {
+      content: attr(data-brand);
+      position: absolute;
+      top: 210px;
+      left: 0;
+      right: 0;
+
+      font-family: "Montserrat", "Arial", sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      text-align: center;
+      color: #242524;
+
+      opacity: 0;
+
+      transition: opacity 0.3s ease;
+    }
+
+    &:nth-child(3n + 1):before {
+      background-color: #ffd215;
+    }
+
+    &:nth-child(3n + 2):before {
+      background-color: #68bf2c;
+    }
+
+    &:nth-child(3n + 3):before {
+      background-color: #fd0740;
+    }
+
+    &:hover,
+    &:focus-within {
+      &::before {
+        clip-path: circle(100% at 50% 40%);
+      }
+
+      &::after {
+        opacity: 0.5;
+      }
+
+      .card__image {
+        transform: translateX(-50%) rotate(-30deg);
+      }
+
+      .card__button {
+        background-color: #012e72;
+      }
+    }
+  }
+
+  .card__image {
+    position: absolute;
+    display: block;
+    object-fit: cover;
+
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+
+    width: 332px;
+    height: 274px;
+    z-index: 1;
+
+    transition: transform 0.6s ease;
+  }
+
+  .card__button {
+    font-family: "Montserrat", "Arial", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #0066ff;
+
+    position: relative;
+    display: block;
+
+    min-height: 38px;
+    border-radius: 20px;
+    border: none;
+
+    margin: 100% auto 0;
+    padding: 10px 30px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 20px 0 #0066ff;
+    }
+  }
+}
