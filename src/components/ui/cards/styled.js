@@ -3,9 +3,10 @@ import styled from 'styled-components';
 const StyledCards = styled.div`
   margin: -1rem;
 
-  height: 100vh;
+  min-height: 100vh;
   background-color: #111111;
   padding-top: 100px;
+  padding-bottom: 100px;
 `;
 
 const StyledLine = styled.hr`
