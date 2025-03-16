@@ -94,6 +94,34 @@
 
     &--3 {
       color: #cd4436;
+      overflow: hidden;
+
+      span {
+        position: relative;
+        display: block;
+
+        transition: transform 0.3s ease;
+
+        &::before {
+          content: attr(data-hover);
+          position: absolute;
+          width: 100%;
+          height: 100%;
+
+          top: 100%;
+          left: 0;
+
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        span {
+          transform: translateY(-100%);
+        }
+      }
     }
 
     &--4 {
