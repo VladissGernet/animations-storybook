@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './cards-2.css';
+import './cards-2.scss';
 
 import cardImage from '/src/assets/tools-card-2.png';
 
