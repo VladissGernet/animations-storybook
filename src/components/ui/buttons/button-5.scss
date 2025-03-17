@@ -13,7 +13,7 @@
     }
   }
 
-// Первая кнопка
+  // Первая кнопка
 
   .btn-1 {
     color: #fff;
@@ -54,7 +54,7 @@
     }
   }
 
-// Вторая кнопка
+  // Вторая кнопка
 
   .btn-2 {
     border: 3px solid #007aff;
@@ -87,6 +87,42 @@
     &:active {
       &::before {
         transform: scaleX(1);
+      }
+    }
+  }
+
+  // Третья кнопка
+
+  .btn-3 {
+    color: #000000;
+    z-index: 0;
+    padding: 20px 30px;
+
+    transition: color 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      background-color: #f2994a;
+      z-index: -1;
+
+      transform: scaleY(0.1);
+      transform-origin: center bottom;
+      transition: transform 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    &:hover,
+    &:focus {
+      color: #fff;
+
+      &::before {
+        transform: scaleY(1);
       }
     }
   }

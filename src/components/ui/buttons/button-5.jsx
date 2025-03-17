@@ -10,6 +10,9 @@ const Button5 = () => (
     <button className='btn btn-2'>
       button 2
     </button>
+    <button className='btn btn-3'>
+      button 3
+    </button>
   </div>
 );
 
