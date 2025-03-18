@@ -19,6 +19,9 @@ const Button5 = () => (
     <button className='btn btn-5'>
       button 5
     </button>
+    <button className='btn btn-6'>
+      <span>button 6</span>
+    </button>
   </div>
 );
 
