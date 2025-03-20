@@ -8,6 +8,12 @@ ${'' /* Костыль с margin, чтобы убрать белый фон*/}
   background-color: ${(props) => props.$backgroundColor ? props.$backgroundColor : '#111111'};
 
   min-height: 80vh;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 `;
 
 export { StyledAnimations };
