@@ -4,9 +4,18 @@ import './animation-3.scss';
 
 const Animation3 = () => {
   return (
-    <div className="animation-3">
-      123
-    </div>
+    <>
+      <p className="animation-3">
+        <span>
+          Glitch is simple
+        </span>
+      </p>
+      <p className="animation-3">
+        <span>
+          Glitch is simple
+        </span>
+      </p>
+    </>
   );
 };
 
