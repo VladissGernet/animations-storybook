@@ -1,0 +1,46 @@
+.animation-1 {
+  width: 170px;
+  height: 82px;
+
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    background-image: url("/src/assets/arrow.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    animation-name: arrow-moving;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes arrow-moving {
+  42%,
+  50%,
+  58% {
+    transform: translateY(0);
+  }
+
+  46%,
+  54% {
+    transform: translateY(-10px);
+  }
+}
+
+// Теперь распишем кадры: стрелка большую часть времени остаётся на
+//  месте и делает несколько раз движение вниз/вверх. Начинаем не с
+//  самого начала 0%, а позднее: от 0% до 42% стрелка не движется,
+//  затем с 42% до 46% движется вниз, с 46% до 50% — обратно вверх,
+//   с 50% до 54% движется снова вверх, с 54% до 58% возвращается в
+//   изначальное положение. Таким образом, за пять секунд стрелка
+//   делает два таких движения. Чтобы движения были равномерными и
+//   вверх, и вниз, интервалы делают одинаковыми по 4% времени.
