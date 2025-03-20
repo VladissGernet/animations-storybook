@@ -7,6 +7,7 @@ import { StyledAnimations } from './styled';
 import { Animation1 } from './animation-1';
 import { Animation2 } from './animation-2';
 import { Animation3 } from './animation-3';
+import { Animation4 } from './animation-4';
 
 export const Animations1 = () => (
   <StyledAnimations>
@@ -32,6 +33,13 @@ export const Animations3 = () => (
   </StyledAnimations>
 )
 
+export const Animations4 = () => (
+  <StyledAnimations>
+    <Container>
+      <Animation4 />
+    </Container>
+  </StyledAnimations>
+)
 
 export default {
   title: 'Анимации'
