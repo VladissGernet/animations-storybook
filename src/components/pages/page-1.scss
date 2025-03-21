@@ -78,6 +78,7 @@ $promo-badge-position: 60%;
       animation-duration: 1s;
       animation-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
       animation-iteration-count: 1;
+      animation-fill-mode: both;
     }
 
     &__badge {
@@ -141,12 +142,12 @@ $promo-badge-position: 60%;
 
 @keyframes boot-appearance {
   0% {
-    transform: translateY(600px) scale(0);
+    transform: translateY(600px) rotateX(30deg) scale(0);
     transform-origin: 50% 100%;
     opacity: 0;
   }
   100% {
-    transform: translateY(0) scale(1);
+    transform: translateY(0) rotateX(0) scale(1);
     transform-origin: 50% -1400px;
     opacity: 1;
   }

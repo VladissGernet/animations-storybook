@@ -22,8 +22,10 @@
 @keyframes marquee-moving {
   0% {
     transform: translateX(100%);
+    transform-origin: left center;
   }
   100% {
     transform: translateX(-100%);
+    transform-origin: right center;
   }
 }
