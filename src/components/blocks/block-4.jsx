@@ -62,6 +62,26 @@ const Block4 = () => {
             className={
               "slider-item" + defineSliderClass(index, sliderIndex, sliders)
             }
+            style={
+              index === sliderIndex - 1
+                ? {
+                    transform: "translate(0)",
+                    visibility:
+                      index === sliderIndex ||
+                      index === sliderIndex - 1 ||
+                      index === sliderIndex + 1
+                        ? "visible"
+                        : "hidden",
+                  }
+                : {
+                    visibility:
+                      index === sliderIndex ||
+                      index === sliderIndex - 1 ||
+                      index === sliderIndex + 1
+                        ? "visible"
+                        : "hidden",
+                  }
+            }
           >
             <img className="slider-img" src={slider.image} alt="slide" />
             <h3 className="slider-title">
