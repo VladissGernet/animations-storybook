@@ -5,8 +5,6 @@ import './block-1.scss';
 const Block1 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(isModalOpen);
-
   return (
     <div className='block-1'>
       <button
