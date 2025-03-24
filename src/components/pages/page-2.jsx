@@ -16,11 +16,21 @@ const Page2 = () => {
     <div className="page-2">
       <header className="header">
         <div className="header__nav menu">
-          <a href="#" className="menu__logo-link">
+          <a
+            href="#"
+            className="menu__logo-link"
+            onClick={(e) => e.preventDefault()}
+          >
             <img src={logo} alt="logo" />
           </a>
 
-          <button className="menu__burger burger" type="button">
+          <button
+            className="menu__burger burger"
+            type="button"
+            onClick={(e) => {
+              e.target.closest("button").classList.toggle("burger--open");
+            }}
+          >
             <span className="burger__line"></span>
             <span className="burger__line"></span>
             <span className="burger__line"></span>

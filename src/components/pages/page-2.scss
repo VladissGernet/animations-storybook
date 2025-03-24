@@ -55,13 +55,10 @@
     &__burger {
       z-index: 150;
     }
-
-    &--open .main-nav {
-      display: block;
-    }
   }
 
   .main-nav {
+    font-family: "Manrope", Arial, sans-serif;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -76,7 +73,7 @@
     display: none;
 
     &__wrap {
-      max-width: 1200px;
+      max-width: 80%;
       height: 100%;
       margin: 0 auto;
       display: flex;
@@ -139,6 +136,8 @@
       height: 2px;
       background-color: #ffffff;
 
+      transition: transform 0.3s ease;
+
       &:nth-child(1) {
         top: 13px;
       }
@@ -156,6 +155,25 @@
     &:hover {
       .burger__line {
         background-color: #43b031;
+      }
+    }
+
+    &--open {
+      & .burger__line {
+        &:nth-child(1),
+        &:nth-child(4) {
+          transform: scaleX(0);
+        }
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+        }
+      }
+
+      & ~ .main-nav {
+        display: block;
       }
     }
   }
