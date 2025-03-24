@@ -172,7 +172,13 @@ const Page2 = () => {
                   Подробнее
                 </a>
               </article>
-              <img className="tab-content__img" src={tab1} alt="Каменный дом" />
+              <img
+                className="tab-content__img"
+                width="750"
+                height="500"
+                src={tab1}
+                alt="Каменный дом"
+              />
             </li>
 
             <li id="work-2" className="tab-content__item ">
@@ -189,7 +195,13 @@ const Page2 = () => {
                   Подробнее
                 </a>
               </article>
-              <img className="tab-content__img" src={tab2} alt="Каменный дом" />
+              <img
+                className="tab-content__img"
+                width="750"
+                height="500"
+                src={tab2}
+                alt="Каменный дом"
+              />
             </li>
 
             <li id="work-3" className="tab-content__item">
@@ -208,7 +220,13 @@ const Page2 = () => {
                   Подробнее
                 </a>
               </article>
-              <img className="tab-content__img" src={tab3} alt="Каменный дом" />
+              <img
+                className="tab-content__img"
+                width="750"
+                height="500"
+                src={tab3}
+                alt="Каменный дом"
+              />
             </li>
           </ul>
         </div>
