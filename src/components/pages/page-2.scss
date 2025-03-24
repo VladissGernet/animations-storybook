@@ -70,7 +70,9 @@
     background-color: #2c2c2c;
     color: #ffffff;
 
-    display: none;
+    transform: translateX(100%);
+
+    transition: transform 0.3s ease 1s;
 
     &__wrap {
       max-width: 80%;
@@ -91,6 +93,25 @@
       justify-content: flex-start;
       gap: 40px;
       text-align: center;
+    }
+
+    &__item {
+      opacity: 0;
+      transform: translateY(-20px);
+
+      transition: opacity 0.3s ease, transform 0.3s ease;
+
+      &:nth-child(1) {
+        transition-delay: 0.6s;
+      }
+
+      &:nth-child(2) {
+        transition-delay: 0.45s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 0s;
+      }
     }
 
     &__link {
@@ -174,6 +195,26 @@
 
       & ~ .main-nav {
         display: block;
+
+        transform: translateX(0%);
+        transition: transform 0.3s ease;
+
+        .main-nav__item {
+          opacity: 1;
+          transform: translateY(0);
+
+          &:nth-child(1) {
+            transition-delay: 0.2s;
+          }
+
+          &:nth-child(2) {
+            transition-delay: 0.45s;
+          }
+
+          &:nth-child(3) {
+            transition-delay: 0.6s;
+          }
+        }
       }
     }
   }
