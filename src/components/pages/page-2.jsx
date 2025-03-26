@@ -48,7 +48,7 @@ const Page2 = () => {
   // Модальное окно.
   const modal = useRef(null);
   const modalWrapper = useRef(null);
-  const [, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onInAnimationEnd = () => {
     modalWrapper.current.classList.remove("modal__wrap--modal-in");
@@ -72,7 +72,6 @@ const Page2 = () => {
     setIsModalOpen(false);
     modalWrapper.current.classList.add("modal__wrap--modal-out");
     modalWrapper.current.addEventListener("animationend", onOutAnimationEnd);
-    console.log("close");
   };
 
   const onClickPrev = () =>
@@ -229,6 +228,7 @@ const Page2 = () => {
                 className="slider__modal-btn"
                 type="button"
                 onClick={modalOpenHandler}
+                disabled={isModalOpen}
               >
                 Связаться
               </button>
@@ -418,22 +418,26 @@ const Page2 = () => {
                 type="text"
                 required
                 placeholder="Имя"
+                disabled={!isModalOpen}
               />
               <input
                 className="callback__field"
                 type="email"
                 required
                 placeholder="Email"
+                disabled={!isModalOpen}
               />
               <textarea
                 className="callback__field callback__field--message"
                 placeholder="Ваше сообщение"
+                disabled={!isModalOpen}
               />
               <input
                 className="callback__button"
                 type="submit"
                 value="Отправить"
                 onClick={(e) => e.preventDefault()}
+                disabled={!isModalOpen}
               />
             </form>
             <h2 className="modal__title">Связаться</h2>

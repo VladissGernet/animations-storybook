@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import "./block-1-2.scss";
 
 const Block1_2 = () => {
-  const [, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const modal = useRef(null);
   const modalWrapper = useRef(null);
 
@@ -33,14 +33,24 @@ const Block1_2 = () => {
 
   return (
     <div className="block-1-2">
-      <button type="button" className="btn" onClick={modalOpenHandler}>
+      <button
+        type="button"
+        className="btn"
+        onClick={modalOpenHandler}
+        disabled={isModalOpen}
+      >
         open modal
       </button>
 
       <div className="modal" ref={modal}>
         <div className="modal__wrapper" ref={modalWrapper}>
           <h2 className="modal-title">Hello!</h2>
-          <button type="button" className="btn" onClick={modalCloseHandler}>
+          <button
+            type="button"
+            className="btn"
+            onClick={modalCloseHandler}
+            disabled={!isModalOpen}
+          >
             ok
           </button>
         </div>
