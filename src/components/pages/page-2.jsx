@@ -44,6 +44,7 @@ const defineSliderClass = (index, sliderIndex, sliders) => {
 
 const Page2 = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const onClickPrev = () =>
     setSliderIndex(sliderIndex > 0 ? sliderIndex - 1 : 0);
@@ -195,7 +196,11 @@ const Page2 = () => {
                 </li>
               </ul>
 
-              <button className="slider__modal-btn" type="button">
+              <button
+                className="slider__modal-btn"
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+              >
                 Связаться
               </button>
             </section>
@@ -369,9 +374,13 @@ const Page2 = () => {
           </ul>
         </section>
 
-        <div className="modal">
+        <div className={`modal ${isModalOpen ? "modal--open" : ""}`}>
           <div className="modal__wrap">
-            <button className="modal__close-btn" type="button">
+            <button
+              className="modal__close-btn"
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+            >
               <img src={cross} alt="закрыть" />
             </button>
             <form action="#" className="modal__form callback">
@@ -395,6 +404,7 @@ const Page2 = () => {
                 className="callback__button"
                 type="submit"
                 value="Отправить"
+                onClick={(e) => e.preventDefault()}
               />
             </form>
             <h2 className="modal__title">Связаться</h2>

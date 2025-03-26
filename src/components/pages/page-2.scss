@@ -382,9 +382,11 @@
     pointer-events: none;
     display: none;
 
+    transition: background-color 0.3s ease;
+
     &--open {
       pointer-events: auto;
-      display: block;
+      display: flex;
     }
 
     &__wrap {
@@ -416,6 +418,12 @@
       align-items: center;
       border: none;
       background-color: transparent;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        opacity: 0.6;
+      }
     }
 
     &__form {
