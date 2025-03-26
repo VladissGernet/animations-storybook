@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import logo from "/src/assets/page-2/logo.svg";
 import headerSlide1 from "/src/assets/page-2/header-slide-1.jpg";
@@ -44,7 +44,36 @@ const defineSliderClass = (index, sliderIndex, sliders) => {
 
 const Page2 = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  // Модальное окно.
+  const modal = useRef(null);
+  const modalWrapper = useRef(null);
+  const [, setIsModalOpen] = useState(false);
+
+  const onInAnimationEnd = () => {
+    modalWrapper.current.classList.remove("modal__wrap--modal-in");
+    modalWrapper.current.removeEventListener("animationend", onInAnimationEnd);
+  };
+
+  const modalOpenHandler = () => {
+    setIsModalOpen(true);
+    modal.current.classList.add("modal--open");
+    modalWrapper.current.classList.remove("modal__wrap--modal-out");
+    modalWrapper.current.classList.add("modal__wrap--modal-in");
+    modalWrapper.current.addEventListener("animationend", onInAnimationEnd);
+  };
+
+  const onOutAnimationEnd = () => {
+    modal.current.classList.remove("modal--open");
+    modalWrapper.current.removeEventListener("animationend", onOutAnimationEnd);
+  };
+
+  const modalCloseHandler = () => {
+    setIsModalOpen(false);
+    modalWrapper.current.classList.add("modal__wrap--modal-out");
+    modalWrapper.current.addEventListener("animationend", onOutAnimationEnd);
+    console.log("close");
+  };
 
   const onClickPrev = () =>
     setSliderIndex(sliderIndex > 0 ? sliderIndex - 1 : 0);
@@ -199,7 +228,7 @@ const Page2 = () => {
               <button
                 className="slider__modal-btn"
                 type="button"
-                onClick={() => setIsModalOpen(true)}
+                onClick={modalOpenHandler}
               >
                 Связаться
               </button>
@@ -374,12 +403,12 @@ const Page2 = () => {
           </ul>
         </section>
 
-        <div className={`modal ${isModalOpen ? "modal--open" : ""}`}>
-          <div className="modal__wrap">
+        <div className="modal" ref={modal}>
+          <div className="modal__wrap" ref={modalWrapper}>
             <button
               className="modal__close-btn"
               type="button"
-              onClick={() => setIsModalOpen(false)}
+              onClick={modalCloseHandler}
             >
               <img src={cross} alt="закрыть" />
             </button>

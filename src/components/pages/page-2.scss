@@ -353,12 +353,13 @@
       left: 110px;
       bottom: 40px;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 40px;
       line-height: 19px;
       color: #ffffff;
       background-color: transparent;
       border: none;
       text-decoration: underline;
+      cursor: pointer;
 
       &:hover,
       &:focus {
@@ -380,13 +381,15 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    display: none;
 
-    transition: background-color 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
 
     &--open {
       pointer-events: auto;
-      display: flex;
+      opacity: 1;
+
+      transition: opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
     }
 
     &__wrap {
@@ -397,6 +400,40 @@
       align-items: center;
       flex-wrap: wrap;
       background-color: #fff;
+
+      animation-duration: 0.3s;
+      animation-timing-function: cubic-bezier(0.465, 0.183, 0.153, 0.946);
+
+      &--modal-in {
+        animation-name: modal-in;
+      }
+
+      &--modal-out {
+        animation-name: modal-out;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes modal-in {
+        0% {
+          transform: translateY(-150%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes modal-out {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(150%);
+          opacity: 0;
+        }
+      }
     }
 
     &__title {
