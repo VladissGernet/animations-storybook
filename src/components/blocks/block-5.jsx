@@ -48,9 +48,9 @@ const Block5 = () => {
         <div className="accordeon__item" key={title}>
           <button
             type="button"
-            className={`accordeon__title${defineButtonClass(
-              accordionHeights[index]
-            )}`}
+            className={`
+              accordeon__title${defineButtonClass(accordionHeights[index])}
+            `}
             onClick={() => accordionButtonHandler(index)}
           >
             {title}

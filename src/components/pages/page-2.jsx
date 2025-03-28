@@ -126,6 +126,60 @@ const Page2 = () => {
   // Табы.
   const [tabIndex, setTabIndex] = useState(0);
 
+  // faqData список.
+  const faqData = [
+    {
+      question: "Сколько стоит построить дом?",
+      answer: `
+        Все очень индивидуально и зависит от ваших желаний,
+        материалов, места постройки и др. Обычно мы обсуждаем с
+        клиентами первоначальную идею и концпецию, после чего
+        предоставляем первоначальный расчет, на который можно
+        ориентироваться.
+      `,
+    },
+    {
+      question: "Вы даете гарантию на свои дома?",
+      answer: `
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Cupiditate tempora recusandae laudantium, id labore minima rem
+        quae, quo voluptatem facere commodi enim iure error. Porro
+        quibusdam labore id magni voluptatem.
+      `,
+    },
+    {
+      question: "Из каких материалов строите дома?",
+      answer: `
+        Cupiditate tempora recusandae laudantium, id labore minima rem
+        quae, quo voluptatem facere commodi enim iure error. Porro
+        quibusdam labore id magni voluptatem.
+      `,
+    },
+    {
+      question: "Как с вами связаться?",
+      answer: `
+        Cupiditate tempora recusandae laudantium, id labore minima rem
+        quae, quo voluptatem facere commodi enim iure error.
+      `,
+    },
+  ];
+
+  const [accordionHeights, setAccordionHeights] = useState(
+    Array.from({ length: faqData.length }, () => 0)
+  );
+
+  const ContentRefs = useRef([]);
+
+  const accordionButtonHandler = (index) => {
+    const newAccordionStates = [...accordionHeights];
+    newAccordionStates[index] === 0
+      ? (newAccordionStates[index] = ContentRefs.current[index].scrollHeight)
+      : (newAccordionStates[index] = 0);
+    setAccordionHeights(newAccordionStates);
+  };
+
+  const defineItemlass = (height) => (height === 0 ? "" : " faq__item--open");
+
   return (
     <div className="page-2">
       <div className="container">
@@ -281,7 +335,6 @@ const Page2 = () => {
 
         <section className="works">
           <h2 className="works__title">Работы</h2>
-
           <div className="works__tabs tabs">
             <ul className="tabs__links">
               {tabsData.map((item, index) => (
@@ -325,81 +378,6 @@ const Page2 = () => {
                   />
                 </li>
               ))}
-              {/* <li
-                className="tab-content__item tab-content__item--active"
-              >
-                <article className="tab-content__wrap">
-                  <p className="tab-content__date">Срок постройки: 4 месяца</p>
-                  <h3 className="tab-content__name">Каменный дом</h3>
-                  <p className="tab-content__text">
-                    Концепция проекта: человеколюбивое, благополучное
-                    пространство. Качествами такового являются: забота,
-                    близость, друзья, демократичность, индивидуальность, чувство
-                    комфорта, приятные ощущения, семейный дом, органичность,
-                    простота и естественность форм.
-                  </p>
-                  <a href="#" className="tab-content__link">
-                    Подробнее
-                  </a>
-                </article>
-                <img
-                  className="tab-content__img"
-                  width="750"
-                  height="500"
-                  src={tab1}
-                  alt="Каменный дом"
-                />
-              </li> */}
-
-              {/* <li id="work-2" className="tab-content__item ">
-                <article className="tab-content__wrap">
-                  <p className="tab-content__date">Срок постройки: 7 месяцев</p>
-                  <h3 className="tab-content__name">Дом в горах</h3>
-                  <p className="tab-content__text">
-                    Проект наглядно демонстрирует, как разместить несколько
-                    функциональных зон на открытой планировке загородного дома.
-                    Зоны выделены с помощью декоративных приемов: потолочных
-                    балок и деревянных панелей на стене в зоне гостиной.
-                  </p>
-                  <a href="#" className="tab-content__link">
-                    Подробнее
-                  </a>
-                </article>
-                <img
-                  className="tab-content__img"
-                  width="750"
-                  height="500"
-                  src={tab2}
-                  alt="Каменный дом"
-                />
-              </li>
-
-              <li id="work-3" className="tab-content__item">
-                <article className="tab-content__wrap">
-                  <p className="tab-content__date">
-                    Срок постройки: 12 месяцев
-                  </p>
-                  <h3 className="tab-content__name">Дом c бассейном</h3>
-                  <p className="tab-content__text">
-                    Вилла имеет три этажа. В доме – две кухни-столовые, две
-                    гостиные с каминами, две гостевые комнаты с ванными
-                    комнатами и большими террасами, главная спальня с ванной и
-                    гардеробной комнатами. Также здесь есть биллиардная и
-                    спа-зона, где расположены хамам, финская сауна, бассейн,
-                    зона релаксации и санузел.
-                  </p>
-                  <a href="#" className="tab-content__link">
-                    Подробнее
-                  </a>
-                </article>
-                <img
-                  className="tab-content__img"
-                  width="750"
-                  height="500"
-                  src={tab3}
-                  alt="Каменный дом"
-                />
-              </li> */}
             </ul>
           </div>
         </section>
@@ -408,59 +386,31 @@ const Page2 = () => {
           <h2 className="faq__title">Частые вопросы</h2>
 
           <ul className="faq__list">
-            <li className="faq__item">
-              <button className="faq__question" type="button">
-                Сколько стоит построить дом?
-              </button>
-              <div className="faq__answer">
-                <p>
-                  Все очень индивидуально и зависит от ваших желаний,
-                  материалов, места постройки и др. Обычно мы обсуждаем с
-                  клиентами первоначальную идею и концпецию, после чего
-                  предоставляем первоначальный расчет, на который можно
-                  ориентироваться.
-                </p>
-              </div>
-            </li>
-
-            <li className="faq__item">
-              <button className="faq__question" type="button">
-                Вы даете гарантию на свои дома?
-              </button>
-              <div className="faq__answer">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Cupiditate tempora recusandae laudantium, id labore minima rem
-                  quae, quo voluptatem facere commodi enim iure error. Porro
-                  quibusdam labore id magni voluptatem.
-                </p>
-              </div>
-            </li>
-
-            <li className="faq__item">
-              <button className="faq__question" type="button">
-                Из каких материалов строите дома?
-              </button>
-              <div className="faq__answer">
-                <p>
-                  Cupiditate tempora recusandae laudantium, id labore minima rem
-                  quae, quo voluptatem facere commodi enim iure error. Porro
-                  quibusdam labore id magni voluptatem.
-                </p>
-              </div>
-            </li>
-
-            <li className="faq__item">
-              <button className="faq__question" type="button">
-                Как с вами связаться?
-              </button>
-              <div className="faq__answer">
-                <p>
-                  Cupiditate tempora recusandae laudantium, id labore minima rem
-                  quae, quo voluptatem facere commodi enim iure error.
-                </p>
-              </div>
-            </li>
+            {faqData.map(({ question, answer }, index) => (
+              <li
+                className={`faq__item${defineItemlass(
+                  accordionHeights[index]
+                )}`}
+                key={question}
+              >
+                <button
+                  className="faq__question"
+                  type="button"
+                  onClick={() => accordionButtonHandler(index)}
+                >
+                  {question}
+                </button>
+                <div
+                  className="faq__answer"
+                  ref={(el) => (ContentRefs.current[index] = el)}
+                  style={{
+                    maxHeight: accordionHeights[index],
+                  }}
+                >
+                  <p>{answer}</p>
+                </div>
+              </li>
+            ))}
           </ul>
         </section>
 
