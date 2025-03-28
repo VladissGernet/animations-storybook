@@ -7,5 +7,5 @@ export const Scrolls1 = () => <Scroll1 />;
 export const Scrolls2ProgressBar = () => <Scroll2 />;
 
 export default {
-  title: "Прокрутки",
+  title: "Scroll Прокрутки",
 };
