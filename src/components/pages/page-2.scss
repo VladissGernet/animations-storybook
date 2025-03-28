@@ -79,10 +79,7 @@
     background-color: #2c2c2c;
     color: #ffffff;
 
-    outline: 5px solid tomato;
-
     transform: translateX(100%);
-
     transition: transform 0.3s ease 1s;
 
     &__wrap {
@@ -612,7 +609,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 500px;
-    // overflow: hidden;
 
     &__item {
       grid-column: 1 / 2;
@@ -621,12 +617,15 @@
       z-index: 10;
       gap: 20px;
       justify-content: space-between;
-      display: none;
+      display: flex;
+      opacity: 0;
+
+      transition: opacity 0.3s ease;
 
       &--active {
         z-index: 20;
         pointer-events: auto;
-        display: flex;
+        opacity: 1;
       }
     }
 
@@ -636,12 +635,19 @@
       justify-content: center;
       align-items: flex-start;
       min-width: 230px;
+      transform: translateX(-100px);
     }
 
     &__img {
       width: 750px;
       height: 500px;
       display: block;
+      transform: translateX(100px);
+    }
+
+    &__wrap,
+    &__img {
+      transition: transform 0.6s ease 0.6s;
     }
 
     &__date {
@@ -682,6 +688,20 @@
 
       &:hover {
         background-color: #43b031;
+      }
+    }
+
+    // Активный таб
+
+    &__item--active {
+      .tab-content__wrap {
+        transform: translateX(0);
+        transition: transform 0.6s ease;
+      }
+
+      .tab-content__img {
+        transform: translateX(0);
+        transition: transform 0.6s ease;
       }
     }
   }

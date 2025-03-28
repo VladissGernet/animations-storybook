@@ -303,21 +303,15 @@ const Page2 = () => {
             <ul className="tabs__content tab-content">
               {tabsData.map((item, index) => (
                 <li
-                  className="tab-content__item tab-content__item--active"
+                  className={`tab-content__item${
+                    tabIndex === index ? " tab-content__item--active" : ""
+                  }`}
                   key={item.title}
                 >
                   <article className="tab-content__wrap">
-                    <p className="tab-content__date">
-                      Срок постройки: 4 месяца
-                    </p>
-                    <h3 className="tab-content__name">Каменный дом</h3>
-                    <p className="tab-content__text">
-                      Концепция проекта: человеколюбивое, благополучное
-                      пространство. Качествами такового являются: забота,
-                      близость, друзья, демократичность, индивидуальность,
-                      чувство комфорта, приятные ощущения, семейный дом,
-                      органичность, простота и естественность форм.
-                    </p>
+                    <p className="tab-content__date">{item.date}</p>
+                    <h3 className="tab-content__name">{item.title}</h3>
+                    <p className="tab-content__text">{item.text}</p>
                     <a href="#" className="tab-content__link">
                       Подробнее
                     </a>
@@ -326,7 +320,7 @@ const Page2 = () => {
                     className="tab-content__img"
                     width="750"
                     height="500"
-                    src={tab1}
+                    src={item.image}
                     alt="Каменный дом"
                   />
                 </li>
