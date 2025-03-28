@@ -42,6 +42,45 @@ const defineSliderClass = (index, sliderIndex, sliders) => {
   return "";
 };
 
+const tabsData = [
+  {
+    title: "Каменный дом",
+    date: "Срок постройки: 4 месяца",
+    text: `
+      Концепция проекта: человеколюбивое, благополучное
+      пространство. Качествами такового являются: забота,
+      близость, друзья, демократичность, индивидуальность, чувство
+      комфорта, приятные ощущения, семейный дом, органичность,
+      простота и естественность форм.
+    `,
+    image: tab1,
+  },
+  {
+    title: "Дом в горах",
+    date: "Срок постройки: 7 месяцев",
+    text: `
+      Проект наглядно демонстрирует, как разместить несколько
+      функциональных зон на открытой планировке загородного дома.
+      Зоны выделены с помощью декоративных приемов: потолочных
+      балок и деревянных панелей на стене в зоне гостиной.
+    `,
+    image: tab2,
+  },
+  {
+    title: "Дом с бассейном",
+    date: "Срок постройки: 12 месяцев",
+    text: `
+      Вилла имеет три этажа. В доме – две кухни-столовые, две
+      гостиные с каминами, две гостевые комнаты с ванными
+      комнатами и большими террасами, главная спальня с ванной и
+      гардеробной комнатами. Также здесь есть биллиардная и
+      спа-зона, где расположены хамам, финская сауна, бассейн,
+      зона релаксации и санузел.
+    `,
+    image: tab3,
+  },
+];
+
 const Page2 = () => {
   const [sliderIndex, setSliderIndex] = useState(0);
 
@@ -83,6 +122,9 @@ const Page2 = () => {
         ? sliderIndex + 1
         : sliderData.length - 1
     );
+
+  // Табы.
+  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <div className="page-2">
@@ -242,30 +284,54 @@ const Page2 = () => {
 
           <div className="works__tabs tabs">
             <ul className="tabs__links">
-              <li className="tabs__links-item">
-                <button
-                  className="tabs__link tabs__link--active"
-                  data-work="work-1"
-                  type="button"
-                >
-                  Каменный дом
-                </button>
-              </li>
-              <li className="tabs__links-item">
-                <button className="tabs__link" data-work="work-2" type="button">
-                  Дом в горах
-                </button>
-              </li>
-              <li className="tabs__links-item">
-                <button className="tabs__link" data-work="work-3" type="button">
-                  Дом с бассейном
-                </button>
-              </li>
+              {tabsData.map((item, index) => (
+                <li className="tabs__links-item" key={item.title}>
+                  <button
+                    className={`tabs__link${
+                      tabIndex === index ? " tabs__link--active" : ""
+                    }`}
+                    type="button"
+                    disabled={tabIndex === index}
+                    onClick={() => setTabIndex(index)}
+                  >
+                    {item.title}
+                  </button>
+                </li>
+              ))}
             </ul>
 
             <ul className="tabs__content tab-content">
-              <li
-                id="work-1"
+              {tabsData.map((item, index) => (
+                <li
+                  className="tab-content__item tab-content__item--active"
+                  key={item.title}
+                >
+                  <article className="tab-content__wrap">
+                    <p className="tab-content__date">
+                      Срок постройки: 4 месяца
+                    </p>
+                    <h3 className="tab-content__name">Каменный дом</h3>
+                    <p className="tab-content__text">
+                      Концепция проекта: человеколюбивое, благополучное
+                      пространство. Качествами такового являются: забота,
+                      близость, друзья, демократичность, индивидуальность,
+                      чувство комфорта, приятные ощущения, семейный дом,
+                      органичность, простота и естественность форм.
+                    </p>
+                    <a href="#" className="tab-content__link">
+                      Подробнее
+                    </a>
+                  </article>
+                  <img
+                    className="tab-content__img"
+                    width="750"
+                    height="500"
+                    src={tab1}
+                    alt="Каменный дом"
+                  />
+                </li>
+              ))}
+              {/* <li
                 className="tab-content__item tab-content__item--active"
               >
                 <article className="tab-content__wrap">
@@ -289,9 +355,9 @@ const Page2 = () => {
                   src={tab1}
                   alt="Каменный дом"
                 />
-              </li>
+              </li> */}
 
-              <li id="work-2" className="tab-content__item ">
+              {/* <li id="work-2" className="tab-content__item ">
                 <article className="tab-content__wrap">
                   <p className="tab-content__date">Срок постройки: 7 месяцев</p>
                   <h3 className="tab-content__name">Дом в горах</h3>
@@ -339,7 +405,7 @@ const Page2 = () => {
                   src={tab3}
                   alt="Каменный дом"
                 />
-              </li>
+              </li> */}
             </ul>
           </div>
         </section>
