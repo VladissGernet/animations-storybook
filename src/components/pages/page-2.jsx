@@ -93,6 +93,7 @@ const Page2 = () => {
               href="#"
               className="menu__logo-link"
               onClick={(e) => e.preventDefault()}
+              tabIndex="-1"
             >
               <img src={logo} alt="logo" />
             </a>

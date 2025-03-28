@@ -56,6 +56,8 @@
       color: #ffffff;
       position: relative;
       z-index: 150;
+
+      pointer-events: none;
     }
 
     &__burger {
@@ -128,6 +130,8 @@
       line-height: 70px;
       line-height: 100%;
 
+      transition: color 0.3s ease;
+
       &:hover {
         color: #43b031;
       }
@@ -140,6 +144,8 @@
       font-weight: 500;
       font-size: 18px;
       line-height: 25px;
+
+      transition: color 0.3s ease;
 
       &:hover {
         color: #43b031;
@@ -163,7 +169,7 @@
       height: 2px;
       background-color: #ffffff;
 
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
 
       &:nth-child(1) {
         top: 13px;
@@ -347,6 +353,10 @@
       }
     }
 
+    &__btn-icon {
+      transition: fill 0.3s ease;
+    }
+
     &__modal-btn {
       position: absolute;
       z-index: 100;
@@ -360,6 +370,8 @@
       border: none;
       text-decoration: underline;
       cursor: pointer;
+
+      transition: color 0.3s ease;
 
       &:hover,
       &:focus {
@@ -543,9 +555,7 @@
       position: relative;
       cursor: pointer;
 
-      &:hover {
-        color: #43b031;
-      }
+      transition: color 0.3s ease;
 
       &::after {
         content: "";
@@ -556,6 +566,22 @@
         height: 1px;
         background-color: #43b031;
         transform-origin: left top;
+      }
+
+      &:not(.tabs__link--active)::after {
+        transform: scaleX(0);
+        transform-origin: left;
+
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        color: #43b031;
+
+        &:not(.tabs__link--active)::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
       }
 
       &--active {
