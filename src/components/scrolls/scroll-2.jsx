@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import "./scroll-2.scss";
 
 const Scroll2 = () => {
+  const progressBar = useRef(null);
+
+  const onScroll = () => {
+    const windowHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const windowScroll = window.pageYOffset;
+    const progressBarWidth = (windowScroll / windowHeight).toFixed(2);
+    progressBar.current.style.transform = `scaleX(${progressBarWidth})`;
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <div className="scroll-2">
-      <div className="progressbar"></div>
+      <div className="progressbar" ref={progressBar}></div>
       <main>
         <h1>Lorem ipsum dolor sit.</h1>
         <p>
