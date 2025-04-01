@@ -58,6 +58,7 @@ const Scroll5 = () => {
     <div className="scroll-5" ref={page}>
       <header className="header">
         <h1>Листай ниже</h1>
+        <p>Активация замены цвета когда видим определенные блоки.</p>
       </header>
 
       <div className="main-content">
