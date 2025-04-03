@@ -29,6 +29,12 @@ const Scroll8 = () => {
         behavior: "smooth",
       });
     });
+
+    return () => {
+      btnScrollTop.removeEventListener("click", () => {});
+      btnScrollCenter.removeEventListener("click", () => {});
+      btnScrollBottom.removeEventListener("click", () => {});
+    };
   }, []);
 
   return (
