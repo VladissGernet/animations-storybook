@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import logo from "/src/assets/page-2/logo.svg";
 import headerSlide1 from "/src/assets/page-2/header-slide-1.jpg";
@@ -16,7 +16,6 @@ import reviews2 from "/src/assets/page-2/reviews-2.png";
 import reviews3 from "/src/assets/page-2/reviews-3.png";
 import reviews4 from "/src/assets/page-2/reviews-4.png";
 import reviews5 from "/src/assets/page-2/reviews-5.png";
-import reviews6 from "/src/assets/page-2/reviews-6.png";
 
 import "./page-2.scss";
 
@@ -189,6 +188,27 @@ const Page2 = () => {
 
   const defineItemlass = (height) => (height === 0 ? "" : " faq__item--open");
 
+  // Progress bar
+  const progressBar = useRef(null);
+
+  useEffect(() => {
+    // Progress bar
+    const onScroll = () => {
+      const windowHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+      const windowScroll = window.pageYOffset;
+      const progressBarWidth = (windowScroll / windowHeight).toFixed(2);
+      progressBar.current.style.transform = `scaleX(${progressBarWidth})`;
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <div className="page-2">
       <div className="container">
@@ -342,7 +362,7 @@ const Page2 = () => {
           </div>
         </header>
         <div className="progress-bar">
-          <div className="progress-bar__value"></div>
+          <div className="progress-bar__value" ref={progressBar}></div>
         </div>
 
         <section className="content">
