@@ -1,0 +1,42 @@
+.scroll-7 {
+  min-height: 100%;
+  margin: -1rem;
+  padding: 0;
+  font-family: Arial, sans-serif;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  main {
+    min-height: 200vh;
+    width: 450px;
+    padding: 30px;
+  }
+
+  .btn {
+    border: 1px solid black;
+    color: black;
+    font-family: inherit;
+    padding: 10px 20px;
+    background-color: #eee;
+
+    position: fixed;
+    right: 0px;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    background-color: #fff;
+  }
+
+  .btn--scroll-to {
+    top: 30px;
+  }
+
+  .btn--scroll-by {
+    top: 80px;
+  }
+}
