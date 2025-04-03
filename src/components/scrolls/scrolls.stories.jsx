@@ -9,6 +9,7 @@ import { Scroll6 } from "./scroll-6";
 import { Scroll7 } from "./scroll-7";
 import { Scroll8 } from "./scroll-8";
 import { Scroll9 } from "./scroll-9";
+import { Scroll10 } from "./scroll-10";
 
 export const Scrolls1 = () => <Scroll1 />;
 export const Scrolls2ProgressBar = () => <Scroll2 />;
@@ -19,6 +20,7 @@ export const Scrolls6 = () => <Scroll6 />;
 export const Scrolls7 = () => <Scroll7 />;
 export const Scrolls8 = () => <Scroll8 />;
 export const Scrolls9 = () => <Scroll9 />;
+export const Scrolls10 = () => <Scroll10 />;
 
 export default {
   title: "Scroll Прокрутки",
