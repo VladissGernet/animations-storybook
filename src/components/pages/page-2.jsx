@@ -8,6 +8,15 @@ import cross from "/src/assets/page-2/icon-cross.svg";
 import tab1 from "/src/assets/page-2/tab-1.png";
 import tab2 from "/src/assets/page-2/tab-2.png";
 import tab3 from "/src/assets/page-2/tab-3.png";
+import about1 from "/src/assets/page-2/about-1.jpg";
+import about2 from "/src/assets/page-2/about-2.jpg";
+import about3 from "/src/assets/page-2/about-3.jpg";
+import reviews1 from "/src/assets/page-2/reviews-1.png";
+import reviews2 from "/src/assets/page-2/reviews-2.png";
+import reviews3 from "/src/assets/page-2/reviews-3.png";
+import reviews4 from "/src/assets/page-2/reviews-4.png";
+import reviews5 from "/src/assets/page-2/reviews-5.png";
+import reviews6 from "/src/assets/page-2/reviews-6.png";
 
 import "./page-2.scss";
 
@@ -332,6 +341,161 @@ const Page2 = () => {
             </section>
           </div>
         </header>
+        <div className="progress-bar">
+          <div className="progress-bar__value"></div>
+        </div>
+
+        <section className="content">
+          <section className="content__block">
+            <div className="content__text-wrap">
+              <h1 className="content__title">О компании</h1>
+              <p className="content__text">
+                Green house — архитектурно-строительная компания с комплексным
+                подходом к проектированию и реализации современных загородных
+                домов премиум класса. В нем описан подробный план действий для
+                строителей: какие технологии и материалы необходимо применять. В
+                нашем портфолио более 200 частных вилл, а также десятки
+                уникальных проектов коммерческой недвижимости.
+              </p>
+            </div>
+
+            <img
+              className="content__image"
+              src={about1}
+              alt="дома green house"
+            />
+          </section>
+
+          <section className="content__block content__block--inverted">
+            <div className="content__text-wrap">
+              <p className="content__text">
+                Green house — архитектурно-строительная компания с комплексным
+                подходом к проектированию и реализации современных загородных
+                домов премиум класса. В нем описан подробный план действий для
+                строителей: какие технологии и материалы необходимо применять. В
+                нашем портфолио более 200 частных вилл, а также десятки
+                уникальных проектов коммерческой недвижимости.
+              </p>
+            </div>
+
+            <img
+              className="content__image"
+              src={about2}
+              alt="дома green house"
+            />
+          </section>
+
+          <section className="content__block">
+            <div className="content__text-wrap">
+              <p className="content__text">
+                Green house — архитектурно-строительная компания с комплексным
+                подходом к проектированию и реализации современных загородных
+                домов премиум класса. В нем описан подробный план действий для
+                строителей: какие технологии и материалы необходимо применять. В
+                нашем портфолио более 200 частных вилл, а также десятки
+                уникальных проектов коммерческой недвижимости.
+              </p>
+            </div>
+
+            <img
+              className="content__image"
+              src={about3}
+              alt="дома green house"
+            />
+          </section>
+        </section>
+
+        <section className="reviews">
+          <h2 className="reviews__title">Отзывы покупателей</h2>
+
+          <ul className="reviews__list reviews-list">
+            <li className="reviews-list__item">
+              <img className="reviews-list__image" src={reviews1} alt="" />
+              <h3 className="reviews-list__name">Анастасия Климова</h3>
+              <p className="reviews-list__description">
+                Построила дом в 2015 году
+              </p>
+              <p className="reviews-list__text">
+                Хочу выразить огромную благодарность компании Green House за их
+                слаженную и четкую работу. Все работы произведены качественно и
+                в оговоренные сроки. Компания Green House — это слаженная
+                команда нацеленная на клиента. Спасибо Вам огромное!!!
+              </p>
+            </li>
+
+            <li className="reviews-list__item">
+              <img
+                className="reviews-list__image"
+                src={reviews2}
+                alt="Витайлий Костин"
+              />
+              <h3 className="reviews-list__name">Витайлий Костин</h3>
+              <p className="reviews-list__description">
+                Построил дом в 2019 году
+              </p>
+              <p className="reviews-list__text">
+                Третий год компания Green House оказывает нам услуги по
+                строительству нашего загородного дома: от фундамента и до
+                внутренней отделки. Работа, выполненная строителями компании,
+                превосходит все ожидания. Лучшие в своем деле!
+              </p>
+            </li>
+
+            <li className="reviews-list__item">
+              <img
+                className="reviews-list__image"
+                src={reviews3}
+                alt="Кира Соболева"
+              />
+              <h3 className="reviews-list__name">Кира Соболева</h3>
+              <p className="reviews-list__description">
+                Построила дом в 2020 году
+              </p>
+              <p className="reviews-list__text">
+                Никогда не жили в натуральном дереве, порадовали моменты того,
+                что отделка внутри бревенчатого дома практически не нужна.
+                Эстетика бревен подходит ко всему. Ну и конечно, аромат
+                натурального дерева внутри дома — отдельный приятный бонус.
+              </p>
+            </li>
+
+            <li className="reviews-list__item">
+              <img
+                className="reviews-list__image"
+                src={reviews4}
+                alt="Александр Казаков"
+              />
+              <h3 className="reviews-list__name">Александр Казаков</h3>
+              <p className="reviews-list__description">
+                Построил дом в 2014 году
+              </p>
+              <p className="reviews-list__text">
+                Заказывали строительство дома. Все было построено в оперативные
+                сроки. Спасибо большое за ваш профессиональный подход. Стоимость
+                вполне адекватная. Могу однозначно рекомендовать эту компанию. И
+                сам обращусь еще.
+              </p>
+            </li>
+
+            <li className="reviews-list__item">
+              <img
+                className="reviews-list__image"
+                src={reviews5}
+                alt="Анатолий Ким"
+              />
+              <h3 className="reviews-list__name">Анатолий Ким</h3>
+              <p className="reviews-list__description">
+                Построил дом в 2018 году
+              </p>
+              <p className="reviews-list__text">
+                Заказал дом, построили быстро качественно. Цена намного меньше,
+                чем в других компаниях. Работой бригады остался доволен, все
+                профессионалы своего дела. Кто решился на строительство,
+                рекомендую компанию Green house.
+              </p>
+            </li>
+          </ul>
+        </section>
 
         <section className="works">
           <h2 className="works__title">Работы</h2>
