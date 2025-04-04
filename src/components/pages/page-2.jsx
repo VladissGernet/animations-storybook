@@ -209,63 +209,117 @@ const Page2 = () => {
     };
   }, []);
 
+  // Fixed header menu appearance.
+  const headerMenuWrapper = useRef(null);
+  const headerBackscrolled = useRef(null);
+  const scrollStarted = useRef(0); // Используем ref для сохранения значения
+  const HEADER_APPEARANCE_HEIGHT = 400;
+  const HEADER_NO_SCROLL_TIME = 600;
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const delta = scrollTop - scrollStarted.current;
+
+      headerMenuWrapper.current.classList.toggle(
+        "header__wrapper--fixed",
+        scrollTop >= HEADER_APPEARANCE_HEIGHT
+      );
+
+      headerBackscrolled.current.classList.toggle(
+        "header__backscrolled--shown",
+        scrollTop >= HEADER_APPEARANCE_HEIGHT && delta < 0
+      );
+
+      scrollStarted.current = scrollTop;
+    };
+
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <div className="page-2">
       <div className="container">
         <header className="header">
-          <div className="header__nav menu">
-            <a
-              href="#"
-              className="menu__logo-link"
-              onClick={(e) => e.preventDefault()}
-              tabIndex="-1"
+          <div className="header__wrapper" ref={headerMenuWrapper}>
+            <div className="header__nav menu">
+              <a
+                href="#"
+                className="menu__logo-link"
+                onClick={(e) => e.preventDefault()}
+                tabIndex="-1"
+              >
+                <img src={logo} alt="logo" />
+              </a>
+
+              <button
+                className="menu__burger burger"
+                type="button"
+                onClick={(e) => {
+                  const burgerButton = e.target.closest("button");
+                  burgerButton.classList.toggle("burger--open");
+
+                  if (burgerButton.classList.contains("burger--open")) {
+                    document.body.style.overflow = "hidden";
+                  } else {
+                    setTimeout(() => {
+                      document.body.removeAttribute("style");
+                    }, HEADER_NO_SCROLL_TIME);
+                  }
+                }}
+              >
+                <span className="burger__line"></span>
+                <span className="burger__line"></span>
+                <span className="burger__line"></span>
+                <span className="burger__line"></span>
+              </button>
+
+              <nav className="menu__nav main-nav">
+                <div className="main-nav__wrap">
+                  <ul className="main-nav__list">
+                    <li className="main-nav__item">
+                      <a href="#" className="main-nav__link">
+                        Работы
+                      </a>
+                    </li>
+                    <li className="main-nav__item">
+                      <a href="#" className="main-nav__link">
+                        О нас
+                      </a>
+                    </li>
+                    <li className="main-nav__item">
+                      <a href="#" className="main-nav__link">
+                        Контакты
+                      </a>
+                    </li>
+                  </ul>
+
+                  <address className="main-nav__address">
+                    <a
+                      className="main-nav__address-link"
+                      href="mailto:info@green-house.com"
+                    >
+                      Info@green-house.com
+                    </a>
+                  </address>
+                </div>
+              </nav>
+            </div>
+            <div
+              className="header__backscrolled backscroll-header"
+              ref={headerBackscrolled}
             >
-              <img src={logo} alt="logo" />
-            </a>
+              <p className="backscroll-header__text">
+                Акция: до 1 апреля скидка 10% всем корпоративным клиентам.
+              </p>
 
-            <button
-              className="menu__burger burger"
-              type="button"
-              onClick={(e) => {
-                e.target.closest("button").classList.toggle("burger--open");
-              }}
-            >
-              <span className="burger__line"></span>
-              <span className="burger__line"></span>
-              <span className="burger__line"></span>
-              <span className="burger__line"></span>
-            </button>
-
-            <nav className="menu__nav main-nav">
-              <div className="main-nav__wrap">
-                <ul className="main-nav__list">
-                  <li className="main-nav__item">
-                    <a href="#" className="main-nav__link">
-                      Работы
-                    </a>
-                  </li>
-                  <li className="main-nav__item">
-                    <a href="#" className="main-nav__link">
-                      О нас
-                    </a>
-                  </li>
-                  <li className="main-nav__item">
-                    <a href="#" className="main-nav__link">
-                      Контакты
-                    </a>
-                  </li>
-                </ul>
-
-                <address className="main-nav__address">
-                  <a
-                    className="main-nav__address-link"
-                    href="mailto:info@green-house.com"
-                  >
-                    Info@green-house.com
-                  </a>
-                </address>
-              </div>
-            </nav>
+              <a href="#" className="backscroll-header__link">
+                Подробнее
+              </a>
+            </div>
           </div>
 
           <div className="header__content">

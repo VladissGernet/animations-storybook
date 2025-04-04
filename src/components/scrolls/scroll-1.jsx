@@ -12,6 +12,7 @@ const Scroll1 = () => {
   const headerScrollHandler = () => {
     const scrollTop = window.pageYOffset;
     const delta = scrollTop - scrollStarted.current;
+    console.log(scrolledHeaderStart.current);
 
     // Управление классами
     header.current.classList.toggle(
