@@ -253,11 +253,26 @@ const Page2 = () => {
     return top + height >= 0 && height + screenHeight > bottom;
   };
 
+  const throttle = (mainFunction, delay) => {
+    let timerFlag = null;
+
+    return (...args) => {
+      if (timerFlag === null) {
+        mainFunction(...args);
+        timerFlag = setTimeout(() => {
+          timerFlag = null;
+        }, delay);
+      }
+    };
+  };
+
   useEffect(() => {
     //  Найдём высоту окна, будем её использовать далее для отслеживания положения элементов.
     const listItemsCurrent = contentItemsList.current.children;
 
     const handleScroll = () => {
+      console.log("go");
+
       const screenHeight = document.documentElement.clientHeight;
       if (
         isPartiallyVisible(contentItemsList.current, screenHeight) === false
@@ -266,8 +281,6 @@ const Page2 = () => {
       }
 
       for (let i = 0; i < listItemsCurrent.length; i++) {
-        console.log(isPartiallyVisible(listItemsCurrent[i], screenHeight));
-
         if (isPartiallyVisible(listItemsCurrent[i], screenHeight)) {
           listItemsCurrent[i].classList.add("content__block--active");
         } else {
@@ -276,10 +289,12 @@ const Page2 = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScrollThrottled = throttle(handleScroll, 200);
+
+    window.addEventListener("scroll", handleScrollThrottled);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollThrottled);
     };
   }, []);
 
