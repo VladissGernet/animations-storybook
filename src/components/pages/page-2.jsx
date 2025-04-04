@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, use } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import logo from "/src/assets/page-2/logo.svg";
 import headerSlide1 from "/src/assets/page-2/header-slide-1.jpg";
