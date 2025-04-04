@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, use } from "react";
 
 import logo from "/src/assets/page-2/logo.svg";
 import headerSlide1 from "/src/assets/page-2/header-slide-1.jpg";
@@ -240,6 +240,49 @@ const Page2 = () => {
     };
   }, []);
 
+  // Плавное появление элементов, когда половина высоты элемента видна при прокрутке
+
+  const contentItemsList = useRef(null);
+
+  const isPartiallyVisible = (element, screenHeight) => {
+    const elementBoundary = element.getBoundingClientRect();
+    const top = elementBoundary.top;
+    const bottom = elementBoundary.bottom;
+    const height = elementBoundary.height;
+
+    return top + height >= 0 && height + screenHeight > bottom;
+  };
+
+  useEffect(() => {
+    //  Найдём высоту окна, будем её использовать далее для отслеживания положения элементов.
+    const listItemsCurrent = contentItemsList.current.children;
+
+    const handleScroll = () => {
+      const screenHeight = document.documentElement.clientHeight;
+      if (
+        isPartiallyVisible(contentItemsList.current, screenHeight) === false
+      ) {
+        return;
+      }
+
+      for (let i = 0; i < listItemsCurrent.length; i++) {
+        console.log(isPartiallyVisible(listItemsCurrent[i], screenHeight));
+
+        if (isPartiallyVisible(listItemsCurrent[i], screenHeight)) {
+          listItemsCurrent[i].classList.add("content__block--active");
+        } else {
+          listItemsCurrent[i].classList.remove("content__block--active");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="page-2">
       <div className="container">
@@ -419,7 +462,7 @@ const Page2 = () => {
           <div className="progress-bar__value" ref={progressBar}></div>
         </div>
 
-        <section className="content">
+        <section className="content" ref={contentItemsList}>
           <section className="content__block">
             <div className="content__text-wrap">
               <h1 className="content__title">О компании</h1>

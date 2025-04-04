@@ -337,6 +337,15 @@
     align-items: center;
     gap: 120px;
     margin-right: -110px;
+
+    opacity: 0.1;
+    transform: translateX(-100%);
+    transition: opacity 1s ease, transform 1s ease;
+
+    &--active {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .content__block--inverted {
