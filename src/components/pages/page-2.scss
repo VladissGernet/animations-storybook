@@ -427,6 +427,8 @@
     display: flex;
     gap: 40px;
 
+    transition: transform 0.3s ease;
+
     &__item {
       flex-shrink: 0;
       flex-basis: 500px;
@@ -566,7 +568,6 @@
       list-style-type: none;
       display: flex;
       position: absolute;
-      z-index: 20;
       bottom: 40px;
       right: 110px;
     }

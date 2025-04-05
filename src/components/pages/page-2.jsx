@@ -271,8 +271,6 @@ const Page2 = () => {
     const listItemsCurrent = contentItemsList.current.children;
 
     const handleScroll = () => {
-      console.log("go");
-
       const screenHeight = document.documentElement.clientHeight;
       if (
         isPartiallyVisible(contentItemsList.current, screenHeight) === false
@@ -296,6 +294,31 @@ const Page2 = () => {
     return () => {
       window.removeEventListener("scroll", handleScrollThrottled);
     };
+  }, []);
+
+  // Горизонтальный скролл.
+
+  const sectionScroll = useRef(null);
+  const list = useRef(null);
+
+  useEffect(() => {
+    const sectionWidth = sectionScroll.current.clientWidth;
+    const listWidth = list.current.scrollWidth;
+    let dist = 0;
+    const step = 50;
+
+    const onScroll = (e) => {
+      e.preventDefault();
+
+      if (e.deltaY > 0 && listWidth + dist > sectionWidth - step * 4) {
+        dist = dist - step;
+      } else if (e.deltaY < 0 && dist < 0) {
+        dist = dist + step;
+      }
+      list.current.style.transform = `translateX(${dist}px)`;
+    };
+
+    sectionScroll.current.addEventListener("wheel", onScroll);
   }, []);
 
   return (
@@ -537,10 +560,10 @@ const Page2 = () => {
           </section>
         </section>
 
-        <section className="reviews">
+        <section className="reviews" ref={sectionScroll}>
           <h2 className="reviews__title">Отзывы покупателей</h2>
 
-          <ul className="reviews__list reviews-list">
+          <ul className="reviews__list reviews-list" ref={list}>
             <li className="reviews-list__item">
               <img className="reviews-list__image" src={reviews1} alt="" />
               <h3 className="reviews-list__name">Анастасия Климова</h3>
