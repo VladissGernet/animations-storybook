@@ -1,0 +1,82 @@
+.animation-6 {
+  margin: -1rem;
+  font-family: "Noto Sans", sans-serif;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .parallax {
+    // Задаём <div>-родителю свойство perspective: 1px. Оно создаёт
+    // виртуальную 3D-плоскость, указывая, что центр блока parallax —
+    // исходная точка построения перспективы. Добавляем overflow-y: auto,
+    // чтобы прокручивать элементы-потомки относительно фиксированной точки.
+    position: relative;
+    perspective: 1px;
+    height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-right: -17px;
+  }
+
+  .parallax-layer {
+    // Теперь удаляем внутренние элементы с классом parallax-layer из общего
+    // потока и растягиваем на всю площадь родителя.
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
+  .parallax-image {
+    transform: translateZ(0);
+    object-fit: cover;
+
+    img {
+      @media (max-width: 768px) {
+        height: calc(100% + 300px);
+        object-fit: cover;
+      }
+    }
+  }
+
+  .parallax-text {
+    /*
+      Если открыть вкладку с CSS, можно заметить, что для блока parallax-text
+      задан scale(3) — то есть элемент увеличен в три раза. Зачем мы это сделали?
+
+      Дело в том, что элемент, отдаляясь от нас в 3D-плоскости, визуально
+      уменьшается в размерах. И наоборот, приближаясь — увеличивается. Чтобы
+      компенсировать эти изменения, мы используем scale. А его значение вычисляем
+      по формуле:
+
+      1 + (translateZ * −1) / perspective
+
+      В нашем случае вычисление будет таким:
+
+      1 + (-2 * −1) / −1
+
+      Мы добились параллакс-эффекта на чистом CSS. Все использованные свойства
+      поддерживаются современными браузерами. При желании можно добавить другие
+      элементы в блок parallax и играть с их смещением по оси Z. Главное — не
+      забывайте, что при изменении положения по этой оси меняются и размеры
+      элемента, поэтому значение scale надо корректировать.
+    */
+    font-size: 72px;
+    color: #cde4f7;
+    transform: translateZ(-2px) translateX(50%) translateY(300px) scale(3);
+
+    @media (max-width: 768px) {
+      font-size: 62px;
+      transform: translateZ(-2px) translateX(24%) translateY(300px) scale(3);
+    }
+  }
+}
