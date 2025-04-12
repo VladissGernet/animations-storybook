@@ -17,6 +17,7 @@ import { Animation10 } from "./animation-10";
 import { Animation11 } from "./animation-11";
 import { Animation12 } from "./animation-12";
 import { Animation13 } from "./animation-13";
+import { Animation14 } from "./animation-14";
 
 export const Animations1 = () => (
   <StyledAnimations>
@@ -67,6 +68,8 @@ export const Animations11ExampleButton = () => <Animation11 />;
 export const Animations12Example3d = () => <Animation12 />;
 
 export const Animations13Cards = () => <Animation13 />;
+
+export const Animations14SpeedExample = () => <Animation14 />;
 
 export default {
   title: "Анимации",
