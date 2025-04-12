@@ -13,6 +13,7 @@ import { Animation6 } from "./animation-6";
 import { Animation7 } from "./animation-7";
 import { Animation8 } from "./animation-8";
 import { Animation9 } from "./animation-9";
+import { Animation10 } from "./animation-10";
 
 export const Animations1 = () => (
   <StyledAnimations>
@@ -55,6 +56,8 @@ export const Animations7ParallaxCSS = () => <Animation7 />;
 export const Animations8ParallaxJS = () => <Animation8 />;
 
 export const Animations9_3D = () => <Animation9 />;
+
+export const Animations10Example3D = () => <Animation10 />;
 
 export default {
   title: "Анимации",

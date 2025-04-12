@@ -1,0 +1,58 @@
+.animation-10 {
+  font-family: Arial, sans-serif;
+  padding: 50px;
+  margin: 0;
+
+  .block {
+    background-color: rgba(0, 255, 0, 0.3);
+    width: 300px;
+    height: 300px;
+    margin-bottom: 100px;
+
+    transform-style: preserve-3d;
+  }
+
+  .image {
+    display: block;
+    object-fit: cover;
+  }
+
+  .image-rotateZ {
+    animation: rotate-Z 10s linear alternate infinite;
+  }
+
+  @keyframes rotate-Z {
+    from {
+      transform: rotatez(0deg);
+    }
+    to {
+      transform: rotatez(360deg);
+    }
+  }
+
+  .image-scaleZ {
+    animation: scale-Z 1s linear alternate infinite;
+  }
+
+  @keyframes scale-Z {
+    from {
+      transform: perspective(400px) scalez(0.3) rotateX(80deg);
+    }
+    to {
+      transform: perspective(400px) scalez(2) rotateX(10deg);
+    }
+  }
+
+  .image-translateZ {
+    animation: translate-Z 1s linear alternate infinite;
+  }
+
+  @keyframes translate-Z {
+    from {
+      transform: perspective(400px) translateZ(-50px);
+    }
+    to {
+      transform: perspective(400px) translateZ(50px);
+    }
+  }
+}
