@@ -1,0 +1,38 @@
+.animation-11 {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  margin: 0;
+
+  .btn {
+    border: none;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0);
+
+    display: flex;
+
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .btn--normal span {
+    backface-visibility: visible;
+  }
+
+  .btn--backface span {
+    backface-visibility: hidden;
+  }
+
+  .btn span {
+    padding: 10px 22px;
+    background-color: purple;
+    color: #ffffff;
+    font-size: 20px;
+
+    transition: transform 0.75s ease;
+    transform: rotateY(0deg);
+  }
+
+  .btn:hover span {
+    transform: rotateY(180deg);
+  }
+}
