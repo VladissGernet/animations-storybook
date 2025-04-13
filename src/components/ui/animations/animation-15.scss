@@ -1,3 +1,75 @@
 .animation-15 {
-  outline: 5px solid tomato;
+  margin: -1rem;
+  font-family: Arial, sans-serif;
+  background-color: #333333;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .wrap {
+    height: 150vh;
+    max-height: 100%;
+
+    overflow-x: hidden;
+
+    perspective: 100px;
+    perspective-origin: center top;
+    transform-style: preserve-3d;
+  }
+
+  .header {
+    height: 80vh;
+    position: relative;
+    transform-style: preserve-3d;
+
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .header::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+
+    background: var(--animaiton-15-bg-image);
+    background-size: cover;
+    background-position: center center;
+
+    transform: translateZ(-170px) translateX(-15px) translateY(280px) scale(3);
+  }
+
+  .header__title {
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    top: 0;
+    left: 20%;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-shadow: 4px 4px 0 #040013;
+
+    transform: translateZ(-90px) translateY(100%) scale(1.8);
+  }
+
+  .header__subtitle {
+    position: absolute;
+    left: 25%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    font-weight: normal;
+    font-size: 36px;
+    text-shadow: 2px 2px 0 #040013;
+
+    transform: translateZ(-100px) translateY(820px) scale(2);
+  }
+
+  .content {
+    min-height: 200vh;
+    background-color: #ffffff;
+    transform: translateZ(0);
+    padding: 20px 10px;
+  }
 }
