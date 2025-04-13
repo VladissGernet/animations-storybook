@@ -14,16 +14,17 @@ const Animation12 = () => {
         проблемой. Чтобы показывать элемент в реальном размере, следует
         применить к нему трансформацию scale().
       </p>
-      <pre>
+      <p>
         Для вычисления коэффициента масштабирования scale применяется следующая
         формула:
+        <br />
         <code> 1 + (translateZ * -1) / perspective</code>.
         <br />
         То есть если свойство <code>perspective</code> равно 1px и мы
         передвигаем элемент по оси Z на -2px, то коэффициент будет равен трём:
         <br />
         <code>.layer &#123; transform: translateZ(-2px) scale(3); &#125;</code>
-      </pre>
+      </p>
       <div className="block">
         <img
           className="image image-translateZ"

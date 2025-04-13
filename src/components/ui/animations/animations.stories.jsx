@@ -68,7 +68,7 @@ export const Animations10Example3D = () => <Animation10 />;
 
 export const Animations11ExampleButton = () => <Animation11 />;
 
-export const Animations12Example3d = () => <Animation12 />;
+export const Animations12Formula = () => <Animation12 />;
 
 export const Animations13Cards = () => <Animation13 />;
 
