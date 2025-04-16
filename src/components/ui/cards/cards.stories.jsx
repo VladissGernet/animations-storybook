@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { StyledCards } from './styled';
+import { StyledCards } from "./styled";
 
-import { Container } from '/src/components/layout/container/container';
-import { CardsList1 } from './cards-1';
-import { CardsList2 } from './cards-2';
-import { CardsList3 } from './cards-3';
+import { Container } from "/src/components/layout/container/container";
+import { CardsList1 } from "./cards-1";
+import { CardsList2 } from "./cards-2";
+import { CardsList3 } from "./cards-3";
+import { CardsList4 } from "./cards-4";
 
 export const Cards1 = () => (
   <StyledCards>
@@ -13,7 +14,7 @@ export const Cards1 = () => (
       <CardsList1 />
     </Container>
   </StyledCards>
-)
+);
 
 export const Cards2 = () => (
   <StyledCards>
@@ -21,7 +22,7 @@ export const Cards2 = () => (
       <CardsList2 />
     </Container>
   </StyledCards>
-)
+);
 
 export const Cards3 = () => (
   <StyledCards>
@@ -29,8 +30,10 @@ export const Cards3 = () => (
       <CardsList3 />
     </Container>
   </StyledCards>
-)
+);
+
+export const Cards4 = () => <CardsList4 />;
 
 export default {
-  title: 'Карточки'
-}
+  title: "Карточки",
+};
