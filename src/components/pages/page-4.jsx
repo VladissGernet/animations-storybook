@@ -12,10 +12,8 @@ const Page4 = () => {
   return (
     <div className="page-4">
       <div className="wrap">
-        <header
-          className="header"
-          style={{ backgroundImage: `url(${headerBg})` }}
-        >
+        <header className="header">
+          <img className="header__bg" src={headerBg} alt="background" />
           <div className="header__nav menu">
             <a href="#" className="menu__logo-link">
               <img src={logo} alt="logo" />
