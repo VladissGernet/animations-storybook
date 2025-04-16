@@ -8,6 +8,15 @@
   background-color: #eeeeee;
   color: #2c2c2c;
 
+  /*
+    Скроем прокрутку у body и зададим .wrap свойства для 3D-трансформации
+    вложенных в него элементов. Теперь полоса прокрутки страницы будет от
+    элемента wrap, а не body.
+  */
+  // body {
+  //   overflow-y: hidden;
+  // }
+
   * {
     box-sizing: border-box;
   }
@@ -49,7 +58,7 @@
       height: 100%;
       object-fit: cover;
       transform-origin: center top;
-      transform: translateZ(-2px) scale(3);
+      transform: translateZ(-2px) translateX(-12px) scale(3);
     }
 
     &__box {
