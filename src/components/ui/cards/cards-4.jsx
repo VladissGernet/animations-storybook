@@ -57,14 +57,16 @@ const CardsList4 = () => {
     box.setAttribute("style", `transform: rotateX(${a}deg) rotateY(${b}deg);`);
   }, THROTTLE_DELAY);
 
-  const onCardOut = (evt) => {
-    evt.target.querySelector(".item-box").removeAttribute("style");
+  const onMouseLeave = (evt) => {
+    setTimeout(() => {
+      evt.target.querySelector(".item-box").removeAttribute("style");
+    }, THROTTLE_DELAY);
   };
 
   useEffect(() => {
     itemsRef.current.forEach((item) => {
       item.addEventListener("mousemove", onMouseMove);
-      item.addEventListener("mouseleave", onCardOut);
+      item.addEventListener("mouseleave", onMouseLeave);
     });
   }, []);
 
