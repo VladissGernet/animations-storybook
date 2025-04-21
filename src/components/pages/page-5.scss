@@ -5,6 +5,15 @@
     box-sizing: border-box;
   }
 
+  .parallax {
+    background-image: linear-gradient(
+      225.1deg,
+      #919890 28.61%,
+      rgba(209, 209, 209, 0) 84.24%
+    );
+    overflow: hidden;
+  }
+
   .parallax__assets {
     min-height: 100vh;
     position: relative;
@@ -15,9 +24,9 @@
       rgba(209, 209, 209, 0) 84.24%
     );
 
-    overflow: hidden;
     perspective: 4000px;
     transform-style: preserve-3d;
+    transition: transform 0.3s ease;
   }
 
   .parallax__layer {
@@ -32,21 +41,24 @@
   .parallax__layer--clouds {
     object-fit: cover;
     object-position: center -10%;
+    transform: translateZ(50px);
   }
 
   .parallax__layer--text {
     object-fit: contain;
     object-position: center 10%;
-    transform: scale(0.8);
+    transform: translateZ(100px) scale(0.8);
   }
 
   .parallax__layer--house {
     object-fit: cover;
     object-position: center 50%;
+    transform: translateZ(300px);
   }
 
   .parallax__layer--bottom {
     object-fit: cover;
-    object-position: center 50%;
+    object-position: center 70%;
+    transform: translateZ(500px);
   }
 }
