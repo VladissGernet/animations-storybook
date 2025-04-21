@@ -31,22 +31,22 @@
 
   .parallax__layer--clouds {
     object-fit: cover;
-    object-position: center top;
+    object-position: center -10%;
   }
 
   .parallax__layer--text {
     object-fit: contain;
-    object-position: center top;
+    object-position: center 10%;
     transform: scale(0.8);
   }
 
   .parallax__layer--house {
     object-fit: cover;
-    object-position: center top;
+    object-position: center 50%;
   }
 
   .parallax__layer--bottom {
     object-fit: cover;
-    transform-origin: center bottom;
+    object-position: center 50%;
   }
 }
