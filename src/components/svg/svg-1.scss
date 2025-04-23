@@ -1,0 +1,44 @@
+.svg-1 {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 90vw;
+    height: 90vh;
+    margin: 0 auto;
+    margin-top: 24px;
+    padding: 50px;
+    background-color: rgba(41, 152, 71, 0.75);
+    border: 2px dashed rgb(20, 64, 36);
+    border-radius: 10px;
+  }
+
+  svg {
+    color: #ffc0cb;
+  }
+
+  .like {
+    background: none;
+    border: 0;
+    width: 80px;
+    height: 56px;
+    cursor: pointer;
+  }
+
+  svg circle {
+    transform: scale(0);
+    transition: transform 0.15s ease-in-out;
+    transform-origin: center;
+  }
+}
