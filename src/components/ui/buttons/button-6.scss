@@ -92,5 +92,20 @@
         }
       }
     }
+
+    &.tel {
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+
+      &:hover {
+        color: #ff1493;
+        border-color: #ff1493;
+        svg {
+          transform: scale(1.2);
+        }
+      }
+    }
   }
 }
