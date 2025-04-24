@@ -107,5 +107,20 @@
         }
       }
     }
+
+    &.calendar {
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+
+      &:hover {
+        color: #6495ed;
+        border-color: #6495ed;
+        svg {
+          transform: scale(1.2);
+        }
+      }
+    }
   }
 }
