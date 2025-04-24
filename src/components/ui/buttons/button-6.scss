@@ -63,7 +63,19 @@
     }
 
     &.run {
-      fill: green;
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+
+      &:hover {
+        color: #d2691e;
+        border-color: #d2691e;
+
+        svg {
+          transform: scale(1.2);
+        }
+      }
     }
   }
 }
