@@ -39,10 +39,12 @@ const Button6 = () => {
         </div>
         <div className="icon-wrapper approve">
           <svg
-            width="10%"
-            height="32px"
-            viewBox="10 0 52 32"
+            width="60"
+            height="60"
+            viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
+            stroke="currentColor"
+            fill="none"
           >
             <path
               d="M26.002,13H20V7.026C20,5.907,19.093,5,17.974,5c-0.615,0-1.198,0.28-1.582,0.76L9,15l0.001,0L9,15v10l3,2h12.473  c0.892,0,1.676-0.592,1.921-1.451l2.49-8.725C29.43,14.908,27.993,13,26.002,13z"

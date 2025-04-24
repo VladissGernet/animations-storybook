@@ -21,17 +21,19 @@
     border: 2px solid #b6b6b6;
     border-radius: 5px;
     cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    svg {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
 
     &.menu {
       border-color: #242d39;
-      transition: border-color 0.3s ease;
 
       svg {
         width: 42px;
         height: 30px;
         color: #242d39;
-
-        transition: transform 0.3s ease, color 0.3s ease;
       }
 
       &:hover {
@@ -40,6 +42,18 @@
           transform: scale(1.2);
           color: #5f9ea0;
         }
+      }
+    }
+
+    &.approve {
+      svg {
+        width: 60px;
+        height: 60px;
+      }
+
+      &:hover {
+        color: #f08080;
+        border-color: #f08080;
       }
     }
 
