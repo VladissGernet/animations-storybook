@@ -25,6 +25,7 @@
 
     svg {
       transition: transform 0.3s ease, color 0.3s ease;
+      will-change: transform;
     }
 
     &.menu {
@@ -54,6 +55,10 @@
       &:hover {
         color: #f08080;
         border-color: #f08080;
+
+        svg {
+          transform: scale(1.2);
+        }
       }
     }
 
