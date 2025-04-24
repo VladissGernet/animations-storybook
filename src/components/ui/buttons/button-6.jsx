@@ -2,7 +2,6 @@ import React from "react";
 
 import "./button-6.scss";
 
-import iconTelegram from "/src/assets/button-6/icon-telegram.svg";
 import iconCalendar from "/src/assets/button-6/icon-calendar.svg";
 
 const Button6 = () => {
@@ -87,7 +86,20 @@ const Button6 = () => {
           </svg>
         </div>
         <div className="icon-wrapper telegram">
-          <img src={iconTelegram} alt="Телеграмм" />
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 30 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M24.202 3.15291C24.3805 3.30222 24.4667 3.5349 24.4284 3.76448L21.8023 19.5214C21.7656 19.7411 21.6201 19.9273 21.4157 20.0159C21.2112 20.1045 20.9759 20.0833 20.7905 19.9597L12.912 14.7074C12.7589 14.6054 12.6557 14.4437 12.6274 14.2619C12.5992 14.08 12.6486 13.8947 12.7635 13.751L15.3742 10.4877L11.0142 13.3944C10.8182 13.525 10.5672 13.5407 10.3564 13.4353L5.10414 10.8092C4.8689 10.6915 4.72656 10.4449 4.74241 10.1824C4.75826 9.91983 4.92925 9.6921 5.17694 9.60364L23.56 3.03826C23.7792 2.95998 24.0234 3.00359 24.202 3.15291ZM7.06747 10.3228L10.6029 12.0905L18.1643 7.0495C18.4337 6.86994 18.7937 6.91349 19.0124 7.1521C19.2312 7.3907 19.2434 7.75314 19.0412 8.00591L14.2362 14.0121L20.674 18.3039L22.9496 4.65058L7.06747 10.3228Z"
+              fill="currentColor"
+            />
+          </svg>
         </div>
         <div className="icon-wrapper tel">
           <svg
