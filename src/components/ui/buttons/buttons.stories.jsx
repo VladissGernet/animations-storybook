@@ -13,6 +13,8 @@ import { Button6 } from "./button-6";
 import { Button7 } from "./button-7";
 import { Button8 } from "./button-8";
 import { Button9 } from "./button-9";
+import { Button10 } from "./button-10";
+import { Button11 } from "./button-11";
 
 export const Buttons1 = () => (
   <StyledButtons>
@@ -82,6 +84,22 @@ export const Buttons9Loader = () => (
   <StyledButtons $backgroundColor="#ffffff">
     <Container>
       <Button9 />
+    </Container>
+  </StyledButtons>
+);
+
+export const Buttons10Loader = () => (
+  <StyledButtons $backgroundColor="#ffffff">
+    <Container>
+      <Button10 />
+    </Container>
+  </StyledButtons>
+);
+
+export const Buttons11Dropdown = () => (
+  <StyledButtons $backgroundColor="#ffffff">
+    <Container>
+      <Button11 />
     </Container>
   </StyledButtons>
 );
