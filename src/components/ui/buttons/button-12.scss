@@ -11,4 +11,26 @@
     border: 2px solid #ff64a8;
     border-radius: 10px;
   }
+
+  @keyframes preloader-1 {
+    50% {
+      stroke-width: 4px;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .preloader {
+    &--1 {
+      stroke: #ff64a8;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-dasharray: 25px 50px;
+      stroke-dashoffset: 150px;
+      stroke-width: 2px;
+
+      animation: preloader-1 3s linear infinite;
+    }
+  }
 }
