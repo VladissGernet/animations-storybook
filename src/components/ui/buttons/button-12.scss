@@ -1,0 +1,14 @@
+.button-12 {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    place-items: center;
+    max-width: 550px;
+    height: 250px;
+    margin: 5rem auto 0;
+    padding: 1.5rem;
+    border: 2px solid #ff64a8;
+    border-radius: 10px;
+  }
+}
