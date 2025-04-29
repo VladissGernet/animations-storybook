@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./button-9.scss";
+import "./svg-4.scss";
 
-const Button9 = () => {
+const Svg4 = () => {
   return (
-    <div className="button-9">
+    <div className="svg-4">
       <div className="wrapper">
         <svg
           width="65"
@@ -25,4 +25,4 @@ const Button9 = () => {
   );
 };
 
-export { Button9 };
+export { Svg4 };
