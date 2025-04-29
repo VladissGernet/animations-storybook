@@ -27,6 +27,12 @@
     }
   }
 
+  @keyframes preloader-3 {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
   .preloader {
     &--1 {
       stroke: #ffc0cb;
@@ -42,13 +48,47 @@
     &--2 {
       circle {
         fill: #ffc0cb;
+
         transform-origin: center;
         transform-box: fill-box;
-        animation: preloader-2 1s linear infinite alternate;
-      }
 
-      circle:nth-child(2) {
-        animation: preloader-2 1s linear infinite alternate-reverse;
+        animation: preloader-2 1s linear infinite alternate;
+
+        &:nth-child(2) {
+          animation-direction: alternate-reverse;
+        }
+      }
+    }
+
+    &--3 {
+      circle {
+        stroke: #ffc0cb;
+        stroke-width: 2px;
+        transform-origin: center;
+        transform-box: fill-box;
+
+        animation-name: preloader-3;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+
+        // 163
+        &:nth-child(1) {
+          stroke-dasharray: 82px;
+          animation-direction: reverse;
+        }
+
+        // 125
+        &:nth-child(2) {
+          stroke-dasharray: 63px;
+        }
+
+        // 88
+        &:nth-child(3) {
+          stroke-dasharray: 44px;
+          stroke-dashoffset: 44px;
+          animation-direction: reverse;
+        }
       }
     }
   }
