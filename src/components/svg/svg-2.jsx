@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./button-12.scss";
+import "./svg-2.scss";
 
-const Button12 = () => {
+const Svg2 = () => {
   return (
-    <div className="button-12">
+    <div className="svg-2">
       <div className="wrapper">
         <svg
           className="preloader preloader--1"
@@ -41,4 +41,4 @@ const Button12 = () => {
   );
 };
 
-export { Button12 };
+export { Svg2 };
