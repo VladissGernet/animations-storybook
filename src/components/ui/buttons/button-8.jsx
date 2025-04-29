@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 
-import "./button-11.scss";
+import "./button-8.scss";
 
-const Button11 = () => {
+const Button8 = () => {
   const dropdown = useRef(null);
   const dropdownButton = useRef(null);
   const dropdownContent = useRef(null);
@@ -22,7 +22,7 @@ const Button11 = () => {
   };
 
   return (
-    <div className="button-11">
+    <div className="button-8">
       <div className="dropdown" ref={dropdown}>
         <button
           className="dropdown__button"
@@ -71,4 +71,4 @@ const Button11 = () => {
   );
 };
 
-export { Button11 };
+export { Button8 };
