@@ -1,0 +1,12 @@
+.cursor-1 {
+  margin: -1rem;
+  min-height: 100vh;
+  cursor: none;
+
+  position: relative;
+
+  svg {
+    position: absolute;
+    transition: fill ease 0.3s;
+  }
+}
