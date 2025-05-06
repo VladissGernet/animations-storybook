@@ -3,6 +3,9 @@ import React, { useRef, useEffect } from "react";
 import "./cursor-1.scss";
 
 const Cursor1 = () => {
+  // Флаг для управления циклом анимации курсора.
+  const isActivePage = useRef(true);
+
   const svgCursor = useRef(null);
   let activeColor;
 
@@ -15,14 +18,18 @@ const Cursor1 = () => {
   // Массив цветов для покраски курсора при клике.
   const COLORS = ["#F66C41", "#00E0FF", "#D9AB36", "#4EF483", "#7C4EFF"];
 
+  /*
+    Добавим обработчик события движения мыши. Будем вычислять текущее
+    положение курсора и записывать в объект mouse с помощью updateCoordinates().
+  */
   const mouse = {
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   };
 
   const pos = {
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   };
 
   const updateCoordinates = (evt) => {
@@ -62,6 +69,11 @@ const Cursor1 = () => {
     pos.y = Math.round(pos.y + diffY * PARAMS.speed);
 
     const translate = `translate3d(${pos.x}px, ${pos.y}px, 0)`;
+
+    // Исправление ошибки "null" при переключении story компонентов.
+    if (!svgCursor.current) {
+      return;
+    }
 
     svgCursor.current.style.transform = translate;
   };
@@ -104,6 +116,10 @@ const Cursor1 = () => {
   */
 
   const requestAnimationHandler = () => {
+    // Остановка цикла анимаций requestAnimationFrame при размонтировании компонента.
+    if (isActivePage.current === false) {
+      return;
+    }
     updateCursor();
     requestAnimationFrame(requestAnimationHandler);
   };
@@ -121,6 +137,8 @@ const Cursor1 = () => {
     return () => {
       window.removeEventListener("click", changeColor);
       window.removeEventListener("mousemove", updateCoordinates);
+      // Остановка цикла анимаций requestAnimationFrame при размонтировании компонента.
+      isActivePage.current = false;
     };
   }, []);
 

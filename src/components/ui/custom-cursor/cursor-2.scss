@@ -1,0 +1,17 @@
+.cursor-2 {
+  margin: -1rem;
+  min-height: 1vh;
+
+  position: relative;
+
+  .cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .cursor path {
+    transition: fill 0.255s ease-in;
+  }
+}
