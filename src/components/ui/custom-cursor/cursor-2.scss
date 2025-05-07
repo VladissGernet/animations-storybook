@@ -1,6 +1,8 @@
 .cursor-2 {
   margin: -1rem;
-  min-height: 1vh;
+  min-height: 100vh;
+  cursor: none;
+  outline: 5px solid tomato;
 
   position: relative;
 
@@ -20,6 +22,7 @@
     top: 0;
     left: 0;
     pointer-events: none;
+    transition: color 0.255s linear;
 
     .line {
       opacity: 0;

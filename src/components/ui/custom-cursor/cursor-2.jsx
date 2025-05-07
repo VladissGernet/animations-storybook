@@ -72,13 +72,26 @@ const Cursor2 = () => {
   };
 
   // Анимация курсора.
-  const cursorClickAnimation = () => {
+  const throttle = (mainFunction, delay) => {
+    let timerFlag = null;
+
+    return (...args) => {
+      if (timerFlag === null) {
+        mainFunction(...args);
+        timerFlag = setTimeout(() => {
+          timerFlag = null;
+        }, delay);
+      }
+    };
+  };
+
+  const cursorClickAnimation = throttle(() => {
     cursor.current.classList.add("cursor--click");
 
     setTimeout(() => {
       cursor.current.classList.remove("cursor--click");
     }, 255);
-  };
+  }, 300);
 
   // Браузерный обаботчик анимаций.
   const requestAnimationHandler = () => {
