@@ -71,6 +71,16 @@ const Cursor2 = () => {
     }
   };
 
+  // Анимация курсора.
+  const cursorClickAnimation = () => {
+    cursor.current.classList.add("cursor--click");
+
+    setTimeout(() => {
+      cursor.current.classList.remove("cursor--click");
+    }, 255);
+  };
+
+  // Браузерный обаботчик анимаций.
   const requestAnimationHandler = () => {
     // Остановка цикла анимаций requestAnimationFrame при размонтировании компонента.
     if (isActivePage.current === false) {
@@ -85,9 +95,11 @@ const Cursor2 = () => {
   useEffect(() => {
     window.addEventListener("mousemove", updateCoordinates);
     window.addEventListener("click", changeColorHandler);
+    window.addEventListener("click", cursorClickAnimation);
     PARAMS.offset = cursor.current.getBoundingClientRect().width / 2;
 
     return () => {
+      window.removeEventListener("click", cursorClickAnimation);
       window.removeEventListener("mousemove", updateCoordinates);
       window.removeEventListener("click", changeColorHandler);
       // Остановка цикла анимаций requestAnimationFrame при размонтировании компонента.
@@ -115,18 +127,21 @@ const Cursor2 = () => {
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
+          className="line"
         />
         <path
           d="M10 1V6"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
+          className="line"
         />
         <path
           d="M1 10H6"
           stroke="currentColor"
           strokeWidth="1.5"
           strokeLinecap="round"
+          className="line"
         />
       </svg>
     </div>
