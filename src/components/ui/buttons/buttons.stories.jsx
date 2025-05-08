@@ -14,6 +14,7 @@ import { Button7 } from "./button-7";
 import { Button8 } from "./button-8";
 import { Button9 } from "./button-9";
 import { Button10 } from "./button-10";
+import { Button11 } from "./button-11";
 
 export const Buttons1 = () => (
   <StyledButtons>
@@ -91,6 +92,14 @@ export const Buttons10Like = () => (
   <StyledButtons $backgroundColor="#666666">
     <Container>
       <Button10 />
+    </Container>
+  </StyledButtons>
+);
+
+export const Buttons11SVGMorphing = () => (
+  <StyledButtons $backgroundColor="#fff">
+    <Container>
+      <Button11 />
     </Container>
   </StyledButtons>
 );

@@ -1,0 +1,39 @@
+.button-11 {
+  outline: 5px solid tomato;
+
+  $transition: 0.155s ease-in;
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+
+  .button {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #2a2a2a;
+    color: #2a2a2a;
+    transition: border-color $transition;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    border-color: #e58000;
+    color: #e58000;
+  }
+
+  .button svg {
+    transition: color $transition;
+  }
+}
