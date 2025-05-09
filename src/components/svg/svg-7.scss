@@ -1,0 +1,27 @@
+.svg-7 {
+  margin: -1rem;
+  background-color: coral;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  svg path {
+    color: #ffffff;
+  }
+
+  .loader {
+    position: relative;
+    width: 50px;
+    height: 24px;
+  }
+
+  .small-elem {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+  }
+}
