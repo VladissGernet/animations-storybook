@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import anime from "animejs";
 
-// Импорт Snap с фиксацией контекста window через imports-loader
-
 import "./svg-7.scss";
 
 const Svg7 = () => {
