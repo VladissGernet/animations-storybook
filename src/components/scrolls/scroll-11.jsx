@@ -39,6 +39,9 @@ const Scroll11 = () => {
       );
     };
 
+    // Чтобы окружность заранее находилась на траектории, добавим в скрипт вызов функции updatePosition.
+    updatePosition();
+
     window.addEventListener("scroll", updatePosition);
 
     return () => {
