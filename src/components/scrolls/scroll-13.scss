@@ -1,0 +1,13 @@
+.scroll-13 {
+  min-height: 100vh;
+  background-color: #252525;
+  scroll-behavior: smooth;
+  position: relative;
+
+  svg {
+    position: absolute;
+    left: 55%;
+    top: 180px;
+    transform: rotate(90deg) translate(-60%, 50%);
+  }
+}
