@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import "./scroll-11.scss";
 
 const Scroll11 = () => {
-  // Флаг для управления циклом анимации курсора.
   const motionPath = useRef(null);
   const motionElement = useRef(null);
 
