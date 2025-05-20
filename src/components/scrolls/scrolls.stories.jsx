@@ -26,7 +26,7 @@ export const Scrolls9 = () => <Scroll9 />;
 export const Scrolls10 = () => <Scroll10 />;
 export const Scrolls11SvgAnimation = () => <Scroll11 />;
 export const Scrolls12SvgAnimation = () => <Scroll12 />;
-export const Scrolls13SvgAnimation = () => <Scroll13 />;
+export const Scrolls13SvgAnimationОптимизированный = () => <Scroll13 />;
 
 export default {
   title: "Scroll Прокрутки",

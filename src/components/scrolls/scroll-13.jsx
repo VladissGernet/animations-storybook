@@ -6,7 +6,32 @@ const Scroll13 = () => {
   const motionPath = useRef(null);
   const motionElement = useRef(null);
 
-  const coordinates = {
+  /*
+    №1.
+    Небольшие советы для улучшения
+    Кэшировать documentHeight и htmlElement.clientHeight — сейчас ты вычисляешь
+    их один раз при монтировании, что хорошо. Но если страница может динамически
+    менять размер (например, при изменении контента или ресайзе окна), стоит добавить
+    обработчик resize и обновлять эти значения.
+
+    №2.
+    В текущем варианте positionCoordinates и ticking — обычные переменные внутри эффекта.
+     Это нормально, но если компонент будет ререндериться, эти значения могут сбрасываться.
+     Чтобы избежать этого, можно хранить их в useRef, например:
+
+    const ticking = useRef(false);
+    const positionCoordinates = useRef({ x: 0, y: 0 });
+
+    И использовать ticking.current, positionCoordinates.current
+
+    №3.
+    Обработка edge cases
+
+    Например, если motionPath.current или motionElement.current вдруг не инициализированы
+    (например, при быстром размонтировании компонента), стоит добавить проверки.
+  */
+
+  const positionCoordinates = {
     x: 0,
     y: 0,
   };
@@ -14,8 +39,27 @@ const Scroll13 = () => {
   useEffect(() => {
     const htmlElement = document.documentElement;
     const documentHeight = htmlElement.scrollHeight;
-
     const pathLength = motionPath.current.getTotalLength();
+
+    /*
+       Флаг, чтобы не вызывать несколько requestAnimationFrame подряд,
+       если предыдущий ещё не отработал.
+    */
+    //  никто не ждёт кадра отрисовки = false. Если ждём = true.
+    let ticking = false;
+
+    // Устанавливает позицию точки.
+    const setPosition = () => {
+      motionElement.current.setAttribute(
+        "transform",
+        `translate(${positionCoordinates.x}, ${positionCoordinates.y})`
+      );
+      /*
+        ticking сбрасывается в false — теперь можно снова запускать
+        requestAnimationFrame при следующем scroll.
+      */
+      ticking = false;
+    };
 
     const updatePosition = () => {
       /*
@@ -30,6 +74,10 @@ const Scroll13 = () => {
         Когда страница прокручена до конца, scrollTop достигает этой величины.
       */
 
+      if (ticking) {
+        return;
+      }
+
       const scrollPercentage =
         htmlElement.scrollTop / (documentHeight - htmlElement.clientHeight);
 
@@ -37,15 +85,14 @@ const Scroll13 = () => {
         scrollPercentage * pathLength
       );
 
-      motionElement.current.setAttribute(
-        "transform",
-        `translate(${position.x}, ${position.y})`
-      );
+      positionCoordinates.x = position.x;
+      positionCoordinates.y = position.y;
+      requestAnimationFrame(setPosition);
+      // ticking становится true — мы "заняли очередь" на кадр отрисовки.
+      ticking = true;
     };
 
     updatePosition();
-
-    // Реализовать request animation frame
 
     window.addEventListener("scroll", updatePosition);
 
