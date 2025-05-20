@@ -1,0 +1,41 @@
+.svg-11 {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 125px;
+    min-height: 100vh;
+  }
+
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 45px;
+  }
+
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero .html {
+    position: absolute;
+    right: -50px;
+    top: -90px;
+    z-index: -1;
+  }
+
+  .html {
+    stroke-opacity: 0.4;
+  }
+}
