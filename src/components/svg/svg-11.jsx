@@ -1,10 +1,89 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import anime from "animejs";
 
 import logo from "/src/assets/svg-11/logo.svg";
 
 import "./svg-11.scss";
 
 const Svg11 = () => {
+  const catSVG = useRef(null);
+  const htmlSVG = useRef(null);
+  const title = useRef(null);
+
+  const COLORS = {
+    black: "#111111",
+    green: "#4EF483",
+  };
+
+  useEffect(() => {
+    const catPaths = catSVG.current.querySelectorAll(
+      "path:not(.cat__green-point):not(.cat__black-points)"
+    );
+    const catGreenPoint = catSVG.current.querySelector(".cat__green-point");
+    const catBlackPoints =
+      catSVG.current.querySelectorAll(".cat__black-points");
+
+    /*
+      Создадим таймлайн. Пишем в нём параметры easing, delay и duration. И сразу сделаем add(), передав туда
+      контуры кота и анимацию stroke-dashoffset.
+    */
+
+    const timeline = anime.timeline({
+      easing: "easeInOutSine",
+      duration: 1300,
+    });
+
+    timeline.add({
+      targets: catPaths,
+      strokeDashoffset: [anime.setDashoffset, 0],
+    });
+
+    // Точка на лбу.
+    timeline.add(
+      {
+        targets: catGreenPoint,
+        duration: 300,
+        fill: ["transparent", COLORS.green],
+      },
+      "-=500"
+    );
+
+    // Черные точки.
+    timeline.add(
+      {
+        targets: catBlackPoints,
+        duration: 500,
+        // Добавим последовательное появление чёрных элементов у кота. Для этого воспользуемся методом anime.stagger().
+        delay: anime.stagger(200),
+        fill: ["transparent", COLORS.black],
+      },
+      "-=1000"
+    );
+
+    // Текст html.
+    timeline.add(
+      {
+        targets: htmlSVG.current.querySelector("path"),
+        strokeDashoffset: [anime.setDashoffset, 0],
+        strokeOpacity: [1, 0.5],
+        duration: 1000,
+      },
+      "-=300"
+    );
+
+    // Текст title.
+    timeline.add(
+      {
+        targets: title.current,
+        translateY: [100, 0],
+        opacity: [0, 1],
+        easing: "easeInElastic",
+        duration: 335,
+      },
+      "-=300"
+    );
+  }, []);
+
   return (
     <div className="svg-11">
       <div className="wrapper">
@@ -18,7 +97,10 @@ const Svg11 = () => {
             />
           </a>
 
+          <h1 ref={title}>Как подготовиться к&nbsp;удаленному собеседованию</h1>
+
           <svg
+            ref={catSVG}
             className="cat"
             xmlns="http://www.w3.org/2000/svg"
             width="359"
@@ -43,7 +125,7 @@ const Svg11 = () => {
               strokeLinejoin="round"
             />
             <path
-              fill="tomato"
+              className="cat__green-point"
               d="M143.997 79.9475C150.459 79.9475 155.698 73.2283 155.698 64.9396C155.698 56.6509 150.459 49.9316 143.997 49.9316C137.535 49.9316 132.296 56.6509 132.296 64.9396C132.296 73.2283 137.535 79.9475 143.997 79.9475Z"
             />
             <path
@@ -71,14 +153,17 @@ const Svg11 = () => {
               strokeLinejoin="round"
             />
             <path
+              className="cat__black-points"
               d="M178.832 78.3604C174.442 81.637 171.592 86.8701 171.592 92.7711C171.592 98.6722 174.435 103.913 178.832 107.182C190.329 106.239 199.446 92.7711 199.446 92.7711C199.446 92.7711 190.329 79.3033 178.832 78.3604Z"
               fill="black"
             />
             <path
+              className="cat__black-points"
               d="M109.924 78.8005C105.668 81.975 102.903 87.051 102.903 92.7713C102.903 98.4916 105.66 103.568 109.924 106.742C121.067 105.831 129.91 92.7713 129.91 92.7713C129.91 92.7713 121.059 79.712 109.924 78.8005Z"
               fill="black"
             />
             <path
+              className="cat__black-points"
               d="M144.602 120.045C153.463 120.045 160.646 117.382 160.646 114.097C160.646 110.812 153.463 108.148 144.602 108.148C135.742 108.148 128.559 110.812 128.559 114.097C128.559 117.382 135.742 120.045 144.602 120.045Z"
               fill="black"
             />
@@ -147,6 +232,7 @@ const Svg11 = () => {
               strokeLinejoin="round"
             />
             <path
+              className="cat__black-points"
               d="M177.578 193.757L138.423 170.805L177.664 168.031L177.578 193.757Z"
               fill="black"
             />
@@ -193,6 +279,7 @@ const Svg11 = () => {
           </svg>
 
           <svg
+            ref={htmlSVG}
             className="html"
             width="688"
             height="827"
