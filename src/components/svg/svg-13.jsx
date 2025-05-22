@@ -15,32 +15,52 @@ import "./svg-13.scss";
 const Svg13 = () => {
   const mask = useRef(null);
 
-  const paintPreview = useCallback(() => {
+  const mouseleaveHandler = useCallback(() => {
     if (!mask.current) return;
     const maskCircles = mask.current.querySelectorAll("circle");
 
-    // anime({
-    //   targets: maskCircles,
-    //   r: ["0", "100"],
-    //   duration: 1000,
-    //   easing: "easeInOutQuad",
-    //   fill: "#000000",
-    //   delay: anime.stagger(100),
-    // });
+    for (let i = 0; i < maskCircles.length; i++) {
+      anime({
+        targets: maskCircles[i],
+        r: 0,
+        duration: 1000,
+        easing: "easeInOutQuad",
+        fill: "transparent",
+        delay: 150,
+      });
+    }
   }, []);
 
-  const resetPreview = useCallback(() => {
+  const mouseenterHandler = useCallback(() => {
     if (!mask.current) return;
     const maskCircles = mask.current.querySelectorAll("circle");
 
-    // anime({
-    //   targets: maskCircles,
-    //   r: ["100", "0"],
-    //   duration: 1000,
-    //   easing: "easeInOutQuad",
-    //   fill: "transparent",
-    //   delay: anime.stagger(100),
-    // });
+    for (let i = 0; i < maskCircles.length; i++) {
+      anime({
+        targets: maskCircles[i],
+        r: anime.random(30, 95),
+        duration: 1000,
+        easing: "easeInOutQuad",
+        fill: "#000000",
+        delay: 150,
+      });
+    }
+  }, []);
+
+  const clickHandler = useCallback(() => {
+    if (!mask.current) return;
+    const maskCircles = mask.current.querySelectorAll("circle");
+
+    for (let i = 0; i < maskCircles.length; i++) {
+      const currentR = maskCircles[i].getAttribute("r");
+      anime({
+        targets: maskCircles[i],
+        r: [currentR, 300],
+        duration: 1000,
+        delay: 150,
+        easing: "easeInOutQuad",
+      });
+    }
   }, []);
 
   return (
@@ -48,8 +68,9 @@ const Svg13 = () => {
       <div className="wrapper">
         <div
           className="preview"
-          onMouseEnter={() => paintPreview()}
-          onMouseLeave={() => resetPreview()}
+          onMouseEnter={() => mouseenterHandler()}
+          onMouseLeave={() => mouseleaveHandler()}
+          onClick={() => clickHandler()}
         >
           <img src={image} alt="Preview" />
           <span>Preview</span>

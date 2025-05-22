@@ -48,21 +48,26 @@
 
     Чтобы исправить это поведение, зададим маске размеры через CSS.
   */
+
   .mask-wrapper {
     width: 610px;
     height: 310px;
 
-    circle {
-      transition: r $trans, fill $trans;
-      r: 0;
-      fill: transparent;
-    }
+    // Решение через scss
+
+    // circle {
+    //   transition: r $trans, fill $trans;
+    //   r: 0;
+    //   fill: transparent;
+    // }
   }
 
-  .preview:hover ~ div .mask-wrapper circle {
-    r: 70;
-    fill: $black;
-  }
+  // Решение через scss
+
+  // .preview:hover ~ div .mask-wrapper circle {
+  //   r: 70;
+  //   fill: $black;
+  // }
 
   .preview {
     position: relative;
