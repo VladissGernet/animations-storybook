@@ -10,6 +10,15 @@
   background-color: #ffffff;
   font-family: sans-serif;
 
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+    display: block;
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -36,7 +45,7 @@
 
   .preview {
     position: relative;
-    width: 600px;
+    width: 610px;
     height: 310px;
     border: 2px solid #ffffff;
     border-radius: 10px;
@@ -70,14 +79,23 @@
       width: 100%;
       height: 100%;
     }
+
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      inset: 0;
+      color: $black;
+    }
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    user-select: none;
-    display: block;
+  /*
+    Маска отображается частично, потому что в разметке она стоит отдельно от блока preview. И по дефолту элемент SVG, в котором находится маска, имеет размеры 300 x 150. Эту область мы и видим.
+
+    Чтобы исправить это поведение, зададим маске размеры через CSS.
+  */
+  .mask-wrapper {
+    width: 610px;
+    height: 310px;
   }
 }

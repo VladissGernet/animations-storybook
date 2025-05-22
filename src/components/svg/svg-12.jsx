@@ -6,7 +6,6 @@ import image from "/src/assets/svg-12/image.jpg";
 import "./svg-12.scss";
 
 const Svg12 = () => {
-  const preview = useRef(null);
   const mask = useRef(null);
 
   const paintPreview = useCallback(() => {
@@ -47,6 +46,10 @@ const Svg12 = () => {
       {/*
         Сначала создадим маску — в ней будут заранее подготовленные в Фигме контуры.
         Чтобы маска не мешала нам на странице, обернём её в <div> с классом visually-hidden.
+
+        Маска отображается частично, потому что в разметке она стоит отдельно от блока preview. И по дефолту элемент SVG, в котором находится маска, имеет размеры 300 x 150. Эту область мы и видим.
+
+        Чтобы исправить это поведение, зададим маске размеры через CSS.
       */}
       <div className="visually-hidden">
         <svg className="mask-wrapper">
@@ -89,7 +92,6 @@ const Svg12 = () => {
       <div className="wrapper">
         <div
           className="preview"
-          ref={preview}
           onMouseOver={() => paintPreview()}
           onMouseLeave={() => resetPainting()}
         >
