@@ -1,0 +1,54 @@
+.svg-14 {
+  @keyframes item-1 {
+    50% {
+      transform: translateX(-40px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes item-2 {
+    50% {
+      transform: translateX(80px);
+    }
+
+    100% {
+      transform: translateX(40px);
+    }
+  }
+
+  .wrapper {
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+    max-width: 550px;
+    height: 250px;
+    margin: 5rem auto 0;
+    padding: 1.5rem;
+  }
+
+  .cells {
+    width: 500px;
+    height: 300px;
+    filter: url("#gooey-filter");
+    background-color: #fbfbfb;
+  }
+
+  .item {
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #000000;
+
+    animation: item-1 1.45s ease-in-out infinite alternate;
+
+    &:last-child {
+      animation: item-2 1.45s ease-in-out infinite alternate;
+    }
+  }
+}
