@@ -5,7 +5,12 @@ import "./block-8.scss";
 const Block8 = () => {
   return (
     <div className="block-8">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 104 30"
+        width="104"
+        height="30"
+      >
         <circle
           r="12"
           cx="16"
