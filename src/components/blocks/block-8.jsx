@@ -8,8 +8,8 @@ const Block8 = () => {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
         <circle
           r="12"
-          cx="14"
-          cy="14"
+          cx="16"
+          cy="15"
           stroke="coral"
           strokeWidth="2"
           fill="transparent"
@@ -24,8 +24,8 @@ const Block8 = () => {
         </circle>
         <circle
           r="12"
-          cx="60"
-          cy="14"
+          cx="52"
+          cy="15"
           fill="#6460AA"
           stroke="#6460AA"
           strokeWidth="2"
@@ -40,8 +40,8 @@ const Block8 = () => {
         </circle>
         <circle
           r="12"
-          cx="106"
-          cy="14"
+          cx="88"
+          cy="15"
           stroke="#FCB711"
           strokeWidth="2"
           fill="transparent"
