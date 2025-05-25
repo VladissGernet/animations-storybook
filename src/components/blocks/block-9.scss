@@ -1,3 +1,19 @@
 .block-9 {
-  outline: 5px solid tomato;
+  font-family: "Arial", sans-serif;
+  font-size: 40px;
+
+  p {
+    margin: 0;
+  }
+
+  .circle-graph {
+    background: #f1f1f1;
+    border-radius: 50%;
+    transform: rotate(270deg);
+
+    circle {
+      fill: #f1f1f1;
+      stroke: #ff7f50;
+    }
+  }
 }
