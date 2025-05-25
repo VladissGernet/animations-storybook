@@ -9,6 +9,7 @@ import { Block5 } from "./block-5";
 import { Block6 } from "./block-6";
 import { Block7 } from "./block-7";
 import { Block8 } from "./block-8";
+import { Block9 } from "./block-9";
 
 export const Blocks1Modal = () => <Block1 />;
 export const Blocks1_2Modal = () => <Block1_2 />;
@@ -19,6 +20,7 @@ export const Blocks5Accordion = () => <Block5 />;
 export const Blocks6Tabs = () => <Block6 />;
 export const Blocks7SVGPattern = () => <Block7 />;
 export const Blocks8SVGPattern = () => <Block8 />;
+export const Blocks9SVGGgraph = () => <Block9 />;
 
 export default {
   title: "Блоки",
