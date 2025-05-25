@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import * as d3 from "d3";
 
 import "./block-9.scss";
 
@@ -12,8 +13,66 @@ const Block9 = () => {
     NS означает namespace, то самое пространство имён, которое определяет, к какой спецификации
      принадлежит элемент.
   */
+
+  //  Пример использования D3.
+  const svgRef = useRef();
+  const data = [
+    {
+      num: 259,
+      color: "#caf880",
+    },
+    {
+      num: 110,
+      color: "#33a7b6",
+    },
+    {
+      num: 140,
+      color: "#c751c0 ",
+    },
+    {
+      num: 63,
+      color: "#4158d0  ",
+    },
+    {
+      num: 125,
+      color: "#2874fc   ",
+    },
+  ];
+  /*
+    select цепляется за целевой элемент, внутри которого будет создана диаграмма. Это может быть любой элемент, необязательно SVG.
+    selectAll получает элемент, который является столбцом и ещё НЕ создан на странице. Это заготовка.
+    data получает массив с данными и связывает («под капотом») пустой span с каждым числом массива.
+    enter() означает, что после этого начнётся отображение диаграммы, а код, который следует ниже, будет выполнен столько раз, сколько элементов в массиве.
+  */
+  useEffect(() => {
+    const svg = d3.select(svgRef.current);
+
+    // Очистим svg перед отрисовкой
+    svg.selectAll("*").remove();
+
+    // Добавим синий круг в центр SVG
+    svg
+      .selectAll("rect")
+      .data(data)
+      .enter()
+      .append("rect")
+      .style("fill", (data) => data.color)
+      .attr("height", (data) => data.num)
+      .attr("width", 95)
+      .attr("x", (data, index) => 95 * index);
+  }, []);
   return (
     <div className="block-9">
+      <h4>Диаграммы из библиотеки D3.js</h4>
+      <svg
+        ref={svgRef}
+        width="500"
+        height="400"
+        viewBox="0 0 500 400"
+        transform="scale(1,-1)"
+      />
+      <hr />
+      <h4>Диаграммы без библиотек.</h4>
       <p>Столбчатая диаграмма</p>
       <svg
         width="500"
@@ -91,6 +150,7 @@ const Block9 = () => {
           strokeDasharray="377 942"
         />
       </svg>
+      <hr />
     </div>
   );
 };
