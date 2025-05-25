@@ -1,9 +1,16 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
+import anime from "animejs";
 
 import "./block-9.scss";
 
 const Block9 = () => {
+  // Сортировка для круоговй диаграммы.
+  const compareNumeric = (a, b) => {
+    if (a < b) return 1;
+    if (a == b) return 0;
+    if (a > b) return -1;
+  };
   /*
     Чаще всего приходится генерировать диаграммы при помощи JavaScript, добавление большого количества
     данных вручную отнимает много времени. При создании SVG-элемента с помощью JS использовать привычный
@@ -16,6 +23,7 @@ const Block9 = () => {
 
   //  Пример использования D3.
   const svgRef = useRef();
+  const svgRef2 = useRef();
   const data = [
     {
       num: 259,
@@ -45,12 +53,8 @@ const Block9 = () => {
     enter() означает, что после этого начнётся отображение диаграммы, а код, который следует ниже, будет выполнен столько раз, сколько элементов в массиве.
   */
   useEffect(() => {
+    // Столбчатая диаграмма.
     const svg = d3.select(svgRef.current);
-
-    // Очистим svg перед отрисовкой
-    svg.selectAll("*").remove();
-
-    // Добавим синий круг в центр SVG
     svg
       .selectAll("rect")
       .data(data)
@@ -60,10 +64,125 @@ const Block9 = () => {
       .attr("height", (data) => data.num)
       .attr("width", 95)
       .attr("x", (data, index) => 95 * index);
+
+    // =============================================================================================================================================
+
+    // Круговая диаграмма
+    const svg2 = d3.select(svgRef2.current);
+
+    /*
+      Далее займёмся расчётами: узнаем, какой окружности принадлежит каждая часть круга. После этого
+      мы сможем показать именно эту часть.
+
+      Найдём длину всей окружности по уже знакомой формуле:
+
+      L = 2πR
+
+      Получаем 628. После узнаем сумму всех чисел в массиве с данными. Можно воспользоваться циклом.
+
+      Теперь, мы знаем, что 100% длины окружности — это 628. 100% круга так относится к total, как X относится
+      к элементу массива.
+
+      X — это процент закрашенной области. Например, для первого числа в массиве формула будет такой:
+
+      100 * 45 = total * X
+
+      Total у нас равен 313.
+
+      X = 4500 / 313
+
+      При работе с графиками вам часто будет необходима формула нахождения X в уравнении с пропорцией.
+      Вспомнить это поможет статья. Вы также найдёте её в дополнительных материалах к разделу.
+      https://math-prosto.ru/ru/pages/linear_equations/solving_equations_with_proportions/
+      Решение уравнений с пропорцией или правило креста.
+
+      Выходит, что 14,3% от длины окружности занимает первое число в массиве. По аналогии будем делать так с каждым
+      элементом массива и записывать процент в атрибут data-fraction.
+
+      Добавим цветов. Каждый цвет должен быть уникальным, иначе может случиться так, что рядом будет две закрашенные
+      фракции с одинаковым цветом. Поэтому будем добавлять цвет в формате rgba, и каждое значение генерировать случайным образом.
+
+      Напомним, что, если вы используете Anime.js, то для получения случайного числа можно использовать встроенный
+      метод anime.random().
+    */
+
+    const dataCircleGraph = [45, 20, 59, 111, 78];
+    dataCircleGraph.sort(compareNumeric);
+
+    let totalLength = 0;
+
+    for (let i = 0; i < dataCircleGraph.length; i++) {
+      totalLength = totalLength + dataCircleGraph[i];
+    }
+
+    svg2
+      .selectAll("circle")
+      .data(dataCircleGraph)
+      .enter()
+      .append("circle")
+      .style("fill", "transparent")
+      .attr("r", 100)
+      .attr("cx", 120)
+      .attr("cy", 120)
+      .attr(
+        "stroke",
+        () =>
+          `rgb(${anime.random(0, 255)}, ${anime.random(0, 255)}, ${anime.random(
+            0,
+            255
+          )})`
+      )
+      .attr("stroke-width", 40)
+      .attr("data-fraction", (dataCircleGraph) =>
+        Math.ceil((100 * dataCircleGraph) / totalLength)
+      )
+      .attr("stroke-dashoffset", totalLength)
+      .attr("stroke-dasharray", totalLength);
+
+    const circles = svgRef2.current.querySelectorAll("circle");
+    let previousCircleOffset = 0;
+    // for (let i = circles.length - 1; i >= 0; i--) {
+    //   /*
+    //     Вычисляем необходимое значение для атрибута stroke-dashoffset.
+
+    //     X = totalLength / 100 * data-fraction
+
+    //     Где totalLength — это длина окружности.
+    //   */
+    //   const fractionLength = Math.floor(
+    //     (totalLength / 100) * circles[i].dataset.fraction
+    //   );
+
+    //   const value = totalLength - fractionLength;
+    //   anime({
+    //     targets: circles[i],
+    //     duration: 2500,
+    //     easing: "easeInOutQuad",
+    //     strokeDashoffset: [anime.setDashoffset, value - previousCircleOffset],
+    //   });
+    //   previousCircleOffset = previousCircleOffset + fractionLength;
+    // }
+    for (let i = circles.length - 1; i >= 0; i--) {
+      const fractionLength = Math.floor(
+        (totalLength / 100) * circles[i].dataset.fraction
+      );
+      const value = totalLength - fractionLength;
+      anime({
+        targets: circles[i],
+        duration: 2500,
+        easing: "easeInOutQuad",
+        strokeDashoffset: [anime.setDashoffset, value - previousCircleOffset],
+      });
+
+      previousCircleOffset = previousCircleOffset + fractionLength;
+    }
   }, []);
   return (
     <div className="block-9">
       <h4>Диаграммы из библиотеки D3.js</h4>
+      {/* Круговая диагармма */}
+      <svg ref={svgRef2} width="242" height="242" viewBox="0 0 242 242" />
+      {/* Столбчатая диаграмма */}
       <svg
         ref={svgRef}
         width="500"
@@ -103,7 +222,7 @@ const Block9 = () => {
         </g>
       </svg>
       <hr />
-      <p>Круговые диаграммы</p>
+      <p>Круговая диаграмма</p>
       {/*
         Здесь потребуется управлять обводкой через свойства stroke-dasharray и stroke-width.
 
