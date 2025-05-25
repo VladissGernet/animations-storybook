@@ -141,28 +141,14 @@ const Block9 = () => {
 
     const circles = svgRef2.current.querySelectorAll("circle");
     let previousCircleOffset = 0;
-    // for (let i = circles.length - 1; i >= 0; i--) {
-    //   /*
-    //     Вычисляем необходимое значение для атрибута stroke-dashoffset.
-
-    //     X = totalLength / 100 * data-fraction
-
-    //     Где totalLength — это длина окружности.
-    //   */
-    //   const fractionLength = Math.floor(
-    //     (totalLength / 100) * circles[i].dataset.fraction
-    //   );
-
-    //   const value = totalLength - fractionLength;
-    //   anime({
-    //     targets: circles[i],
-    //     duration: 2500,
-    //     easing: "easeInOutQuad",
-    //     strokeDashoffset: [anime.setDashoffset, value - previousCircleOffset],
-    //   });
-    //   previousCircleOffset = previousCircleOffset + fractionLength;
-    // }
     for (let i = circles.length - 1; i >= 0; i--) {
+      //   /*
+      //     Вычисляем необходимое значение для атрибута stroke-dashoffset.
+
+      //     X = totalLength / 100 * data-fraction
+
+      //     Где totalLength — это длина окружности.
+      //   */
       const fractionLength = Math.floor(
         (totalLength / 100) * circles[i].dataset.fraction
       );
