@@ -14,6 +14,7 @@ import { Svg11 } from "./svg-11";
 import { Svg12 } from "./svg-12";
 import { Svg13 } from "./svg-13";
 import { Svg14 } from "./svg-14";
+import { Svg15 } from "./svg-15";
 
 export const Svg1LikeButton = () => <Svg1 />;
 export const Svg2Loaders = () => <Svg2 />;
@@ -29,6 +30,7 @@ export const Svg11TimelineAndComposition = () => <Svg11 />;
 export const Svg12Hover = () => <Svg12 />;
 export const Svg13Hover = () => <Svg13 />;
 export const Svg14Gooey = () => <Svg14 />;
+export const Svg15Graph = () => <Svg15 />;
 
 export default {
   title: "SVG Анимации",
